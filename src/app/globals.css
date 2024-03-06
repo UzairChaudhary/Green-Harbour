@@ -16,12 +16,22 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html{
+  @apply scroll-smooth font-poppins;
+}
+
+/* Navbar links */
+.navbar ul a  {
+  
+  @apply text-base relative w-fit ;
+  
+}
+.navbar ul a {
+  @apply before:absolute before:w-full before:h-[2px] before:left-0 before:-bottom-2 md:before:-bottom-4 before:bg-green_color before:scale-0  ;
+  
+}
+
+.navbar ul a.active,
+.navbar ul a:hover {
+  @apply text-orange_color before:scale-100;
 }
