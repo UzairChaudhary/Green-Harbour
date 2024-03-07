@@ -38,11 +38,11 @@ function Navbar() {
       }, []);
     
   return (
-    <nav suppressHydrationWarning={true} className="bg-green_color py-2 pt-4 flex justify-around items-center space-x-96 ">
+    <nav suppressHydrationWarning={true} className="bg-green_color flex justify-around items-center pt-2 space-x-96 ">
       {/* Logo on the left */}
       
         <Link href="/" suppressHydrationWarning={true}>
-          <Image  src="/Amazon.png" height={130} width={130} alt="Green Harbour" />
+          <Image  src="/Amazon.png" height={130} width={130} alt="Green Harbour" className='' />
          
         </Link>
       
@@ -87,7 +87,7 @@ function Navbar() {
       ) : (
         // Navigation links for non-mobile view
         <div className="navbar flex items-center space-x-6 ">
-          <ul className=" md:flex-align-center space-x-3 lg:space-x-6">
+          <ul className=" md:flex-align-center space-x-3 text-white lg:space-x-6">
               {links.map(({ id, linkText, url }) => (
                 <ActiveLink href={url} key={id}>
                   {linkText}
@@ -98,7 +98,7 @@ function Navbar() {
 
           
             <div>
-              <div className=" bg-orange-500 hover:cursor-pointer text-white py-2 px-4 rounded-md">
+              <div className=" bg-orange-500 hover:cursor-pointer text-white py-2 px-4 rounded-lg">
               Register Today
             </div>
             

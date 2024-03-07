@@ -15,19 +15,23 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/public/fonts/Proxima-Nova-Font.otf') format('otf');
+}
 
 html{
-  @apply scroll-smooth font-poppins;
+  @apply scroll-smooth font-proxima-nova;
 }
 
 /* Navbar links */
 .navbar ul a  {
   
-  @apply text-base relative w-fit ;
+  @apply text-base relative w-fit transition-a ;
   
 }
 .navbar ul a {
-  @apply before:absolute before:w-full before:h-[2px] before:left-0 before:-bottom-2 md:before:-bottom-4 before:bg-green_color before:scale-0  ;
+  @apply before:absolute before:w-full before:h-[2px] before:left-0 before:top-8 md:before:-bottom-4 before:bg-orange_color before:scale-0 before:transition-a ;
   
 }
 

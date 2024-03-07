@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,14 +18,23 @@ module.exports = {
       colors: {
         green_color: '#87995C', // Green color
         orange_color: '#EA580C', // Orange color
-        
+        mud_color : '#474038', // Hero Section Heading Color
           
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        
+        'proxima-nova': ['Proxima Nova', 'sans-serif'],
       },
+      
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        ".transition-a": {
+          transition: "all 0.3s ease-in-out",
+        }
+        
+      })
+    })
+  ],
 }
