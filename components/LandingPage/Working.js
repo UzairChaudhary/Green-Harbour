@@ -33,19 +33,21 @@ const stepData = [
 
 function StepTile({ title, heading, description, imgSrc, imgAlt }) {
   return (
-    <div className=" text-white">
-      <div className="p-6 rounded-3xl shadow-sm bg-green_color">
+    
+      <div className="p-6 text-white rounded-3xl shadow-sm bg-green_color w-96">
+        
         <div className="flex flex-col ">
           <div className="text-xl font-semibold">{title}</div>
           <div className="mt-3 text-2xl font-bold">{heading}</div>
           <div className="mt-3 text-lg">{description}</div>
         </div>
+        
         <div className="flex justify-end mr-5">
-
             <img loading="lazy" src={imgSrc} alt={imgAlt}  />
         </div>
+
       </div>
-    </div>
+    
   );
 }
 
