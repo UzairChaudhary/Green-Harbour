@@ -14,7 +14,7 @@ export default function HeroSection() {
                 <p className="text-lg text-white font-proxima-nova font-bold">sanctuary and start saving on your energy expenses today!</p>
 
             </div>
-            <button className="bg-orange_color text-white font-bold py-3 text-lg px-6 mt-16 rounded-lg">Register Today</button>
+            <button className="bg-orange_color text-white font-bold py-3 text-lg px-6 mt-16 mb-10  rounded-lg">Register Today</button>
         </div>
     </div>
 
