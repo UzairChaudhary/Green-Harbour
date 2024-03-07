@@ -36,7 +36,7 @@ function StepTile({ title, heading, description, imgSrc, imgAlt }) {
     
       <div className="p-6 text-white rounded-3xl shadow-sm bg-green_color w-96">
         
-        <div className="flex flex-col ">
+        <div className="flex flex-col px-2 ">
           <div className="text-xl font-semibold">{title}</div>
           <div className="mt-3 text-2xl font-bold">{heading}</div>
           <div className="mt-3 text-lg">{description}</div>
@@ -53,9 +53,9 @@ function StepTile({ title, heading, description, imgSrc, imgAlt }) {
 
 function StepsSection() {
   return (
-    <section className="flex overflow-hidden mt-32 relative flex-col items-center px-8 py-20 min-h-[999px]">
+    <section className="flex font-proxima-nova overflow-hidden mt-32 relative flex-col items-center px-8 py-20 min-h-[999px]">
       <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/67d3b5384c8d55b490a75ac91e5b530b4f7b151ea266faf4a2688e91095b07d7?apiKey=58b353e16f7149db9729650bdfef6357&" alt="Background" className=" absolute inset-0 w-full " />
-      <div className="relative mt-20 text-4xl font-extrabold text-white whitespace-nowrap">
+      <div className="relative mt-32 text-4xl font-extrabold text-white whitespace-nowrap">
         How it works ?
       </div>
       <div className="relative mt-5 text-2xl text-white">
