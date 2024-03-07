@@ -49,19 +49,7 @@ export default function Benefits() {
         </div>
         
         
-        <div className='flex text-lg flex-col gap-5 mt-5'>
-            {/* ROW 1 */}
-            <div className='flex gap-5 items-center'>
-                
-                
-            </div>
-            
-            {/* ROW 2 */}
-            <div className='flex gap-5 items-center'>
-                
-                
-            </div>
-        </div>
+        
     </div>
   )
 }
