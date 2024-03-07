@@ -34,7 +34,7 @@ const stepData = [
 function StepTile({ title, heading, description, imgSrc, imgAlt }) {
   return (
     
-      <div className="p-6 text-white rounded-3xl shadow-sm bg-green_color w-96">
+      <div className="p-6 text-white rounded-3xl hover:scale-105 hover:cursor-pointer transition-a shadow-sm bg-green_color w-96">
         
         <div className="flex flex-col px-2 ">
           <div className="text-xl font-semibold">{title}</div>

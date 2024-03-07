@@ -63,7 +63,7 @@ export default function  Upgrades () {
       {homeServicesData.map((service) => (
         <div className="flex flex-col justify-evenly gap-1 p-4 rounded-md" key={service.id}>
         <h2 className="flex justify-center text-2xl mb-3 font-bold">{service.heading}</h2>
-        <img src={service.imageSrc} alt={service.heading} className="w-full" />
+        <img src={service.imageSrc} alt={service.heading} className="w-full hover:cursor-pointer hover:scale-105 transition-a" />
         <p className='flex justify-center mt-2 text-base items-center text-center'>{service.description}</p>
       </div>
         
