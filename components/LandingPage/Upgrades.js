@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../common/button';
 
 export default function  Upgrades () {
     const homeServicesData = [
@@ -69,7 +70,9 @@ export default function  Upgrades () {
       ))}
     </div>
     
-    
+    <div className='flex justify-center mt-10'>
+    <Button/>
+    </div>
     </div>
   )
 }

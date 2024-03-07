@@ -13,6 +13,7 @@ import Link from 'next/link';
 import { links } from "../../data/links";
 
 import ActiveLink from './ActiveLink'
+import Button from '../common/button';
 function Navbar() {
     const [isMobile, setIsMobile] = useState(false);
     const { dispatch, isSidebarOpen } = useUiContext();
@@ -96,14 +97,7 @@ function Navbar() {
           </ul>
           
 
-          
-            <div>
-              <div className=" bg-orange-500 hover:cursor-pointer text-white py-2 px-4 rounded-lg">
-              Register Today
-            </div>
-            
-            
-            </div>
+          <Button/>
           
         </div>
       )}
