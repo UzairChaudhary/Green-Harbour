@@ -1,5 +1,4 @@
 import React from 'react'
-import { links } from '../../data/links'
 
 export default function Footer() {
   return (
