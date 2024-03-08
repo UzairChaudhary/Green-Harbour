@@ -28,7 +28,7 @@ html{
 }
 
 *::-webkit-scrollbar-thumb {
-  @apply rounded bg-mud_color;
+  @apply rounded bg-orange_color;
 }
 
 *::-webkit-scrollbar-track {
