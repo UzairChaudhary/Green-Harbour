@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div className='bg-green_color px-20 p-10 text-white flex justify-between'>
+    <div className='bg-green_color footer hover:cursor-pointer px-20 p-10 text-white flex justify-between'>
         <div className='flex flex-col'>
-            <h1 className='text-2xl font-bold'>Green Harbour ECO4</h1>
+            <h2 className='text-2xl font-bold'>Green Harbour ECO4</h2>
             <h1 className='mt-4'>Contacts</h1>
             <h1 className='mt-2'>Email</h1>
             <h1 className='mt-2'>Phone</h1>

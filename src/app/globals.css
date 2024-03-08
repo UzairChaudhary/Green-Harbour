@@ -50,3 +50,11 @@ html{
 .navbar ul a:hover {
   @apply text-orange_color before:scale-100;
 }
+
+.footer h1 {
+  @apply transition-a;
+}
+
+.footer h1:hover {
+  @apply ml-2 text-mud_color;
+}
