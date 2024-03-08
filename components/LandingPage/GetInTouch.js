@@ -3,7 +3,7 @@ import Button from '../common/button'
 
 export default function GetInTouch() {
   return (
-    <div className=' mx-40'>
+    <div className='mb-40 mx-40'>
         <h1 className='mt-20 flex justify-center text-4xl font-extrabold text-green_color'>Get In Touch</h1>
         <div className='flex justify-center text-mud_color gap-10 mt-10'>
             <div className='flex text-mud_color flex-col gap-3'>
@@ -29,7 +29,7 @@ export default function GetInTouch() {
             <h1 >Message</h1>
             <textarea className='border border-mud_color rounded-md p-2 h-24'></textarea>
         </div>
-        <div className='flex mx-48 px-2 mt-5 justify-end'>
+        <div className='flex hover:cursor-pointer mx-48 px-2 mt-5 justify-end'>
             <div className='bg-orange_color px-6 text-white py-1 rounded'>
                 Submit
             </div>
