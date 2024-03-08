@@ -7,6 +7,7 @@ import Benefits from '../../components/LandingPage/Benefits'
 import Upgrades from '../../components/LandingPage/Upgrades'
 import Working from '../../components/LandingPage/Working'
 import FAQ from '../../components/LandingPage/FAQ'
+import Aboutus from '../../components/LandingPage/aboutus'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Upgrades/>
       <Working/>
       <FAQ/>
+      <Aboutus/>
     </div>
   )
 }
