@@ -14,7 +14,7 @@ import Footer from '../../components/LandingPage/Footer'
 export default function Home() {
   return (
     <div>
-      <Navbar/>
+      
       <HeroSection/>
       <Benefits/>
       <Upgrades/>
@@ -22,7 +22,7 @@ export default function Home() {
       <FAQ/>
       <Aboutus/>
       <GetInTouch/>
-      <Footer/>
+      
     </div>
   )
 }
