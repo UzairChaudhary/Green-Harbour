@@ -69,7 +69,7 @@ function StepsSection() {
           
         </div>
       </div>
-      <div className="z-10 mt-36">
+      <div className="z-10 mt-36 hover:scale-105 hover:transition-a">
       <Button/>
     
       </div>

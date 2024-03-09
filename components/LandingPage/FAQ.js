@@ -35,7 +35,7 @@ export default function FAQ() {
         <div className="hover:cursor-pointer flex flex-col gap-3 p-5 mt-10 w-full">
             {faqData.map((faq, index) => (
                 <div key={index} className="faq-item border p-3 rounded-lg bg-green_color text-white shadow-md">
-                    <div className=" flex py-3 text-2xl justify-between gap-20 px-10 items-center " onClick={() => toggleAccordion(index)}>
+                    <div className=" flex py-3 text-2xl justify-between  gap-20 px-10 items-center " onClick={() => toggleAccordion(index)}>
                         <span>{faq.question}</span>
                         {activeIndex === index ? <IoIosArrowDropup /> : <IoIosArrowDropdown />}
                     </div>

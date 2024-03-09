@@ -16,7 +16,7 @@ export default function HeroSection() {
             </div>
             <Link
             href={'/who-qualifies'} 
-            className="bg-orange_color text-white font-bold py-3 text-lg px-6 mt-16 mb-10  rounded-lg">Register Today</Link>
+            className="bg-orange_color hover:scale-105 hover:transition-a text-white font-bold py-3 text-lg px-6 mt-16 mb-10  rounded-lg">Register Today</Link>
         </div>
     </div>
 
