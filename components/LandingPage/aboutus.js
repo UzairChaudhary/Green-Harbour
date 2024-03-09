@@ -3,7 +3,7 @@ import Button from '../common/button'
 
 export default function Aboutus() {
   return (
-    <div className='flex font-proxima-nova text-mud_color flex-col mx-40 mt-20'>
+    <div id='aboutus' className='flex font-proxima-nova text-mud_color flex-col mx-40 mt-20'>
         <h1 className='text-4xl flex justify-center font-extrabold '>About Us</h1>
         
         <h1 className='text-2xl font-bold mt-10'>Who we are</h1>

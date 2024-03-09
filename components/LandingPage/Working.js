@@ -53,7 +53,7 @@ function StepTile({ title, heading, description, imgSrc, imgAlt }) {
 
 function StepsSection() {
   return (
-    <section className="flex font-proxima-nova overflow-hidden mt-32 relative flex-col items-center px-8 py-20 min-h-[999px]">
+    <div id='how-it-works' className="flex font-proxima-nova overflow-hidden mt-32 relative flex-col items-center px-8 py-20 min-h-[999px]">
       <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/67d3b5384c8d55b490a75ac91e5b530b4f7b151ea266faf4a2688e91095b07d7?apiKey=58b353e16f7149db9729650bdfef6357&" alt="Background" className=" absolute inset-0 w-full " />
       <div className="relative mt-32 text-4xl font-extrabold text-white whitespace-nowrap">
         How it works ?
@@ -73,7 +73,7 @@ function StepsSection() {
       <Button/>
     
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -4,32 +4,40 @@ import { usePathname, useRouter } from 'next/navigation'
 const ActiveLink = ({ href, children }) => {
   const pathname = usePathname();
   const router = useRouter();
-  
+  var isActive;
   // Use the pathname of the current route to determine if the link should be active
-  const isActive = pathname === href;
+  if (href==="/"){
+    isActive=false
+  }
+  else isActive = pathname === href;
   
   const handleClick = (e) => {
     //console.log("pathname: ",pathname)
     //console.log("href: ",href)
-    if (pathname.includes("/Jobs") && href==="#jobs-section"){
-      e.preventDefault();
+    if (pathname.includes("/") && href==="#aboutus"){
+      
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-    else if (pathname.includes("/Jobs") && href!=="/"){
+    if (pathname.includes("/who-qualifies") && href==="#aboutus"){
       
       router.push('/');
-      
-  }
-    else if(href!=="/"){
-      e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+      
+  }
+  if (pathname.includes("/") && href==="#how-it-works"){
+      
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+   
   };
 
   return (

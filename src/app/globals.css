@@ -38,7 +38,7 @@ html{
 /* Navbar links */
 .navbar ul a  {
   
-  @apply text-base relative w-fit transition-a ;
+  @apply text-lg relative w-fit transition-a ;
   
 }
 .navbar ul a {

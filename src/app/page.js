@@ -18,7 +18,7 @@ export default function Home() {
       <HeroSection/>
       <Benefits/>
       <Upgrades/>
-      <Working/>
+      <Working />
       <FAQ/>
       <Aboutus/>
       <GetInTouch/>

@@ -2,27 +2,27 @@ export const links = [
   {
     id: 1,
     linkText: "Home",
-    url: "",
+    url: "/",
   },
   {
     id: 2,
     linkText: "About Us",
-    url: "#jobs-section",
+    url: "#aboutus",
   },
   {
     id: 3,
     linkText: "How it works?",
-    url: "#companies-section",
+    url: "#how-it-works",
   },
   {
     id: 4,
     linkText: "Who Qualifies?",
-    url: "#aboutus-section",
+    url: "/who-qualifies",
   },
   {
     id: 5,
     linkText: "Why is it free?",
-    url: "#aboutus-section",
+    url: "/why-is-it-free",
   }
   
 ];

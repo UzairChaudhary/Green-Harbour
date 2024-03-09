@@ -43,7 +43,7 @@ function Navbar() {
       {/* Logo on the left */}
       
         <Link href="/" suppressHydrationWarning={true}>
-          <Image  src="/Amazon.png" height={130} width={130} alt="Green Harbour" className='' />
+          <Image  src="/amazon.png" height={130} width={130} alt="Green Harbour" className='' />
          
         </Link>
       
