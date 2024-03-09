@@ -6,22 +6,45 @@ import GetInTouch from '../../../components/LandingPage/GetInTouch';
 export default function Page() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [isSubmit, setisSubmit] = useState(false)
-    
-    const questions = [
+    const [questions, setquestions] = useState([
         "1) What is your occupancy type?",
         "2) What is your main source of heating?",
+        "3) Has your property got central heating?",
+        "4) Is your boiler older than 18 years?"
         // Add more questions as needed
-      ];
+      ])
+    
+      const [options, setoptions] = useState([
+        ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
+        ["Gas", "Electricity", "Oil", "Not sure"],
+        ["Yes","No"],
+        ["Yes","No","Not sure"]
+      ])
+    
     
     const NUM_QUESTIONS = questions.length; // Define NUM_QUESTIONS
     const [answers, setAnswers] = useState(Array(NUM_QUESTIONS).fill(null)); // Use NUM_QUESTIONS
     
 
-  const options = [
-    ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
-    ["Gas", "Electricity", "Oil", "Not sure"],
-    // Add more options for each question as needed
-  ];
+
+
+  const updateQuestionAndAnswerAtIndex = (index, newQuestion, newAnswer) => {
+    // Create a copy of the questions array
+    const updatedQuestions = [...questions];
+  
+    // Replace the question at the specified index with the new question
+    updatedQuestions[index] = newQuestion;
+  
+    // Create a copy of the answers array
+    const updatedAnswers = [...answers];
+  
+    // Replace the answer at the specified index with the new answer
+    updatedAnswers[index] = newAnswer;
+  
+    // Update the state with the new arrays
+    setquestions(updatedQuestions);
+    setoptions(updatedAnswers);
+  };
 
 
   const handleAnswer = (index, answer) => {
@@ -29,18 +52,32 @@ export default function Page() {
     newAnswers[index] = answer;
     setAnswers(newAnswers);
 
+    if(answer==="Social Tenant") //show submit button
+    {
+        return
+    }
+    if (answer==="Electricity"){ // add new questions
+        updateQuestionAndAnswerAtIndex(2, "What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
+    }
+    
+
     if (index < NUM_QUESTIONS - 1) {
         setCurrentQuestion(index + 1);
-      }
-  };
+        }
+
+    }
+
 
   const handleNextQuestion = () => {
     setCurrentQuestion(currentQuestion + 1);
   };
 
   const handlePrevQuestion = () => {
-    setCurrentQuestion(currentQuestion - 1);
+    console.log(currentQuestion)
+    setCurrentQuestion(currentQuestion - 1 < 0 ? 0 : currentQuestion - 1);
+    console.log(currentQuestion)
   };
+  
 
   const handleSubmitButton = () => {
       setisSubmit(true)
@@ -104,10 +141,10 @@ export default function Page() {
         {/* Display this div when he is not eligible */}
         {isSubmit ? (
             <div className='container'>
-                <div className='question-container bg-green_color text-white'>
-                    <p className='text-lg font-bold'>Sorry. It seems like you do not meet the criteria to claim a heating upgrade today.</p>
-                    <p className='mt-5 text-lg flex justify-center font-bold'>Thankyou for checking</p>
-                    <p className='mt-5'>If you are still confident you should be eligible, or know someone else that might qualify, please share or give us a call.</p>
+                <div className='p-10 bg-green_color text-white w-full mx-20  rounded-lg'>
+                    <p className='text-2xl font-bold m-5 flex justify-center'>Sorry. It seems like you do not meet the criteria to claim a heating upgrade today.</p>
+                    <p className='mt-5 text-2xl flex justify-center font-bold'>Thankyou for checking</p>
+                    <p className='mt-5 m-5 text-lg flex justify-center'>If you are still confident you should be eligible, or know someone else that might qualify, please share or give us a call.</p>
                 </div>
             </div>
         ):(
@@ -115,6 +152,11 @@ export default function Page() {
         <div className="container">
             <div className="question-container bg-green_color text-white">
                 <h2 className="question font-bold text-xl">{questions[currentQuestion]}</h2>
+                {currentQuestion===3 && (
+                    <p className="answer mb-5 text-lg">
+                    If unsure if the boiler qualifies, please visit <a href='https://www.homeheatingguide.co.uk/efficiency-tables' target='_blank' className='text-mud_color'>https://www.homeheatingguide.co.uk/efficiency-tables</a> and check that efficiency rating is below 86%
+                    </p>
+                )}
                 <div className="options">
                 {options[currentQuestion].map((option, index) => (
                     <label key={index} className={`rounded-lg option ${answers[currentQuestion] === option ? 'selected' : ''}`}>
@@ -135,7 +177,7 @@ export default function Page() {
                     <div className="navigation-buttons">
                     <button
                     className="submit-button "
-                    disabled={currentQuestion === 0}
+                    
                     onClick={handleSubmitButton}
                     >
                     Submit
