@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Link from 'next/link'
 export default function HeroSection() {
   return (
     <div className="relative bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center" style={{backgroundImage: "url('/landingpage/herosection.png')"}}>
@@ -14,7 +14,9 @@ export default function HeroSection() {
                 <p className="text-lg text-white font-proxima-nova font-bold">sanctuary and start saving on your energy expenses today!</p>
 
             </div>
-            <button className="bg-orange_color text-white font-bold py-3 text-lg px-6 mt-16 mb-10  rounded-lg">Register Today</button>
+            <Link
+            href={'/who-qualifies'} 
+            className="bg-orange_color text-white font-bold py-3 text-lg px-6 mt-16 mb-10  rounded-lg">Register Today</Link>
         </div>
     </div>
 

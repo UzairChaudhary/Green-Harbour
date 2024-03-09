@@ -3,6 +3,8 @@ import './globals.css'
 import { UiProvider } from "../../contexts/UiContext";
 import Navbar from '../../components/LandingPage/Navbar';
 import Footer from '../../components/LandingPage/Footer';
+import NextTopLoader from 'nextjs-toploader';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -16,6 +18,7 @@ export default function RootLayout({ children }) {
 
     <html lang="en">
       <body className={inter.className}>
+        <NextTopLoader color='#EA580C' />
         <Navbar/>
         {children}
         <Footer/>
