@@ -88,6 +88,7 @@ export default function Page() {
   };
 
   const handlePrevQuestion = () => {
+    //automatically change back questions if option is not electricity
     if (answers[currentQuestion - 1] !== "Electricity") {
         // Reset questions and options
         setQuestions([

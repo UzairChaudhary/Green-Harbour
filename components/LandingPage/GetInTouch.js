@@ -1,7 +1,19 @@
+"use client"
 import React from 'react'
 import Button from '../common/button'
-
+const axios = require('axios');
 export default function GetInTouch() {
+    
+
+
+    const handlesubmit = async () => {
+        try {
+          const response = await axios.get('/api/contacts'); // Assuming your API route is named 'hubapi.js'
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
   return (
     <div className='mb-40 mx-40'>
         <h1 className='mt-20 flex justify-center text-4xl font-extrabold text-green_color'>Get In Touch</h1>
@@ -30,7 +42,9 @@ export default function GetInTouch() {
             <textarea className='border border-mud_color rounded-md p-2 h-24'></textarea>
         </div>
         <div className='flex hover:cursor-pointer mx-48 px-2 mt-5 justify-end'>
-            <div className='bg-orange_color px-6 text-white py-1 rounded'>
+            <div
+            onClick={handlesubmit} 
+            className='bg-orange_color px-6 text-white py-1 rounded'>
                 Submit
             </div>
         </div>
