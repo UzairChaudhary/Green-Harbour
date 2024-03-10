@@ -6,45 +6,42 @@ import GetInTouch from '../../../components/LandingPage/GetInTouch';
 export default function Page() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [isSubmit, setisSubmit] = useState(false)
-    const [questions, setquestions] = useState([
+    const [questions, setQuestions] = useState([
         "1) What is your occupancy type?",
         "2) What is your main source of heating?",
         "3) Has your property got central heating?",
         "4) Is your boiler older than 18 years?"
         // Add more questions as needed
-      ])
-    
-      const [options, setoptions] = useState([
+    ]);
+
+    const [options, setOptions] = useState([
         ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
         ["Gas", "Electricity", "Oil", "Not sure"],
         ["Yes","No"],
         ["Yes","No","Not sure"]
-      ])
-    
+    ]);
+
     
     const NUM_QUESTIONS = questions.length; // Define NUM_QUESTIONS
     const [answers, setAnswers] = useState(Array(NUM_QUESTIONS).fill(null)); // Use NUM_QUESTIONS
     
+    
+    
+    const updateQuestionAndAnswerAtIndex = (index, newQuestion, newOptions) => {
+        // Update question at the specified index
+        const updatedQuestions = [...questions];
+        updatedQuestions[index] = newQuestion;
+        setQuestions(updatedQuestions);
+    
+        // Update options at the specified index
+        const updatedOptions = [...options];
+        updatedOptions[index] = newOptions;
+        setOptions(updatedOptions);
+    };
+    
 
 
-
-  const updateQuestionAndAnswerAtIndex = (index, newQuestion, newAnswer) => {
-    // Create a copy of the questions array
-    const updatedQuestions = [...questions];
-  
-    // Replace the question at the specified index with the new question
-    updatedQuestions[index] = newQuestion;
-  
-    // Create a copy of the answers array
-    const updatedAnswers = [...answers];
-  
-    // Replace the answer at the specified index with the new answer
-    updatedAnswers[index] = newAnswer;
-  
-    // Update the state with the new arrays
-    setquestions(updatedQuestions);
-    setoptions(updatedAnswers);
-  };
+    
 
 
   const handleAnswer = (index, answer) => {
@@ -56,8 +53,26 @@ export default function Page() {
     {
         return
     }
-    if (answer==="Electricity"){ // add new questions
+    if (answer === "Electricity") {
         updateQuestionAndAnswerAtIndex(2, "What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
+        
+    }
+    if (answer === "Gas") {
+        
+        setQuestions([
+            "1) What is your occupancy type?",
+            "2) What is your main source of heating?",
+            "3) Has your property got central heating?",
+            "4) Is your boiler older than 18 years?"
+            // Add more questions as needed
+        ]);
+        
+        setOptions([
+            ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
+            ["Gas", "Electricity", "Oil", "Not sure"],
+            ["Yes","No"],
+            ["Yes","No","Not sure"]
+        ]);
     }
     
 
@@ -73,9 +88,25 @@ export default function Page() {
   };
 
   const handlePrevQuestion = () => {
-    console.log(currentQuestion)
+    if (answers[currentQuestion - 1] !== "Electricity") {
+        // Reset questions and options
+        setQuestions([
+            "1) What is your occupancy type?",
+            "2) What is your main source of heating?",
+            "3) Has your property got central heating?",
+            "4) Is your boiler older than 18 years?"
+            // Add more questions as needed
+        ]);
+        
+        setOptions([
+            ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
+            ["Gas", "Electricity", "Oil", "Not sure"],
+            ["Yes","No"],
+            ["Yes","No","Not sure"]
+        ]);
+    }
     setCurrentQuestion(currentQuestion - 1 < 0 ? 0 : currentQuestion - 1);
-    console.log(currentQuestion)
+    
   };
   
 
