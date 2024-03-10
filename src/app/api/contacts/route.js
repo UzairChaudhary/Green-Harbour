@@ -43,7 +43,8 @@ export async function GET() {
           });
   
         // Handle successful response
-        return NextResponse.json(response.data);
+        console.log("response : ",response.data)
+        return NextResponse.json({ success: 'Data sent successfully' });
     } catch (error) {
       console.error(error);
       return NextResponse.json({ error: 'Failed to send data' });

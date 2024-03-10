@@ -4,6 +4,7 @@ import { UiProvider } from "../../contexts/UiContext";
 import Navbar from '../../components/LandingPage/Navbar';
 import Footer from '../../components/LandingPage/Footer';
 import NextTopLoader from 'nextjs-toploader';
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
 
     <html lang="en">
       <body className={inter.className}>
+        <Toaster/>
         <NextTopLoader color='#EA580C' />
         <Navbar/>
         {children}

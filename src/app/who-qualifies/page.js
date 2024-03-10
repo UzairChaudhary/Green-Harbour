@@ -3,9 +3,21 @@ import React, { useState } from 'react';
 import Button from '../../../components/common/button'
 import './Questions.css'; // Import CSS file for styling
 import GetInTouch from '../../../components/LandingPage/GetInTouch';
+import {toast} from 'react-hot-toast'
+const axios = require('axios');
 export default function Page() {
+
+    const [firstname, setfirstname] = useState("")
+    const [lastname, setlastname] = useState("")
+    const [phonenumber, setphonenumber] = useState("")
+    const [email, setemail] = useState("")
+
+
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [isSubmit, setisSubmit] = useState(false)
+    const [formDisplay, setformDisplay] = useState(false)
+    const [eligible, seteligible] = useState(false)
+    
     const [questions, setQuestions] = useState([
         "1) What is your occupancy type?",
         "2) What is your main source of heating?",
@@ -79,16 +91,29 @@ export default function Page() {
     if (index < NUM_QUESTIONS - 1) {
         setCurrentQuestion(index + 1);
         }
+    if (index===NUM_QUESTIONS-1) {
+        handleFormDisplay()
+    }
 
     }
 
-
+    const handleFormDisplay = () =>{
+        setformDisplay(true)
+    }
   const handleNextQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1);
+    //if questions completed, show contact form 
+    if(currentQuestion===NUM_QUESTIONS-1){
+        setCurrentQuestion(currentQuestion+1)
+        handleFormDisplay()
+    }
+    else setCurrentQuestion(currentQuestion + 1);
   };
 
   const handlePrevQuestion = () => {
     //automatically change back questions if option is not electricity
+    if(formDisplay){
+        setformDisplay(false)
+    }
     if (answers[currentQuestion - 1] !== "Electricity") {
         // Reset questions and options
         setQuestions([
@@ -113,6 +138,54 @@ export default function Page() {
 
   const handleSubmitButton = () => {
       setisSubmit(true)
+  }
+
+  const handleSubmission = () =>{
+    if(firstname===""){
+        toast.error("Please enter your first name")
+        return
+    }
+    if(lastname===""){
+        toast.error("Please enter your last name")
+        return
+    }
+    if(phonenumber===""){
+        toast.error("Please enter your phone number")
+        return
+    }
+    if(email===""){
+        toast.error("Please enter your email")
+        return
+    }
+    try{
+        const contactData = {
+            properties: {
+              firstname: firstname,
+              lastname: lastname,
+              email: email,
+              phone: phonenumber
+            }
+          };
+        axios.post('/api/contacts', contactData)
+        .then(response => {
+            console.log(response.data);
+            if (response.data.success){
+                toast.success('Submitted Successfully')
+                seteligible(true)
+                setisSubmit(true)
+            }
+            else
+            {
+                toast.error('Submission Failed')
+            }
+        }); // Assuming your API route is named 'hubapi.js'
+        
+    }
+    catch(error){
+        console.error('Error:', error);
+    }
+    
+    
   }
   return (
     <>
@@ -173,16 +246,96 @@ export default function Page() {
         {/* Display this div when he is not eligible */}
         {isSubmit ? (
             <div className='container'>
+                {eligible ? (
+                    <div className='p-10 bg-green_color text-white w-full mx-20  rounded-lg'>
+                    <p className='text-2xl font-bold m-5 flex justify-center'>Your information is submitted successfully.</p>
+                    <p className='mt-5 text-2xl flex justify-center font-bold'>Thankyou for using our services!</p>
+                    <p className='mt-5 m-5 text-lg flex justify-center'>Green Harbour ECO4 Home Advisor will contact you soon.</p>
+                </div>
+                ):(
+
                 <div className='p-10 bg-green_color text-white w-full mx-20  rounded-lg'>
                     <p className='text-2xl font-bold m-5 flex justify-center'>Sorry. It seems like you do not meet the criteria to claim a heating upgrade today.</p>
                     <p className='mt-5 text-2xl flex justify-center font-bold'>Thankyou for checking</p>
                     <p className='mt-5 m-5 text-lg flex justify-center'>If you are still confident you should be eligible, or know someone else that might qualify, please share or give us a call.</p>
                 </div>
+                )}
             </div>
         ):(
             
         <div className="container">
-            <div className="question-container bg-green_color text-white">
+            {formDisplay ? (
+
+            <div
+            className="question-container bg-green_color text-white mt-10">
+            <h2 className="question font-bold text-2xl">You{`'`}re highly likely to qualify! </h2>
+            <h2>Please confirm your contact details below.</h2>
+            <p>This is so your Green Harbour ECO4 Home Advisor can get in touch.</p>
+            <div className='flex flex-col mt-5'>
+                <label className=''>First Name</label>
+                <input
+                type='text'
+                required
+                value={firstname}
+                onChange={(e) => setfirstname(e.target.value)}
+                placeholder='Enter your first name'
+                className='rounded-md border border-mud_color p-2 text-mud_color'
+                />
+            </div>
+            <div className='flex flex-col mt-5'>
+                <label className=''>Last Name</label>
+                <input
+                type='text'
+                required
+                value={lastname}
+                onChange={(e) => setlastname(e.target.value)}
+                placeholder='Enter your last name'
+                className='rounded-md border border-mud_color p-2 text-mud_color'
+                />
+            </div>
+            <div className='flex flex-col mt-5'>
+                <label className=''>Phone Number</label>
+                <input
+                type='text'
+                required
+                value={phonenumber}
+                onChange={(e)=>setphonenumber(e.target.value)}
+                placeholder='Enter your phone number'
+                className='rounded-md border border-mud_color p-2 text-mud_color'
+                />
+            </div>
+            <div className='flex flex-col mt-5'>
+                <label className=''>Email</label>
+                <input
+                type='text'
+                required
+                value={email}
+                onChange={(e)=>setemail(e.target.value)}
+                placeholder='Enter your email'
+                className='rounded-md border border-mud_color p-2 text-mud_color'
+                />
+            </div>
+            <div className="navigation-buttons">
+                <button
+                    className="prev-button "
+                    
+                    onClick={handlePrevQuestion}
+                >
+                    Back
+                </button>
+                <button
+                    className="next-button"
+                    onClick={handleSubmission}
+                    
+                >
+                    Submit
+                </button>
+                </div>
+            </div>
+            ):(
+                
+            <div 
+            className="question-container bg-green_color text-white">
                 <h2 className="question font-bold text-xl">{questions[currentQuestion]}</h2>
                 {currentQuestion===3 && (
                     <p className="answer mb-5 text-lg">
@@ -228,7 +381,7 @@ export default function Page() {
                 </button>
                 <button
                     className="next-button"
-                    disabled={currentQuestion === NUM_QUESTIONS - 1}
+                    
                     onClick={handleNextQuestion}
                 >
                     Next
@@ -236,9 +389,13 @@ export default function Page() {
                 </div>
                 )}
             </div>
+
+            )}
       
         </div>
         )}
+
+        
         
 
         

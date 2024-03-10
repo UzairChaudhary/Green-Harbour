@@ -1,11 +1,8 @@
 "use client"
 import React from 'react'
-import Button from '../common/button'
 const axios = require('axios');
 export default function GetInTouch() {
     
-
-
     const handlesubmit = async () => {
         try {
             const contactData = {
