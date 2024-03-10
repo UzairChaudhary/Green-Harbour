@@ -168,7 +168,7 @@ export default function Page() {
           };
         axios.post('/api/contacts', contactData)
         .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
             if (response.data.success){
                 toast.success('Submitted Successfully')
                 seteligible(true)
