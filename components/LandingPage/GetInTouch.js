@@ -8,10 +8,18 @@ export default function GetInTouch() {
 
     const handlesubmit = async () => {
         try {
-          const response = await axios.get('/api/contacts'); // Assuming your API route is named 'hubapi.js'
-          console.log(response.data);
+            const contactData = {
+                properties: {
+                  firstname: 'John',
+                  lastname: 'Doe',
+                  email: 'john.doe@example.com',
+                  phone: '1234567890'
+                }
+              };
+            const response = await axios.post('/api/contacts', contactData); // Assuming your API route is named 'hubapi.js'
+            console.log(response.data);
         } catch (error) {
-          console.error('Error:', error);
+            console.error('Error:', error);
         }
       };
   return (

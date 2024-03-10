@@ -23,3 +23,29 @@ export async function GET() {
       return NextResponse.json({ error: 'Failed to fetch data' });
     }
   }
+
+
+  export async function POST(req) {
+    try {
+      // Extract API key from request headers (optional, if needed)
+        const apiKey = process.env.NEXT_PUBLIC_HUBSPOT_ACCESS_TOKEN ;
+        
+        const apiUrl = `https://api.hubapi.com/crm/v3/objects/contacts`;
+        
+        const data = await req.json();
+        //console.log(data)
+
+        const response = await axios.post(apiUrl, data, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${apiKey}`
+            }
+          });
+  
+        // Handle successful response
+        return NextResponse.json(response.data);
+    } catch (error) {
+      console.error(error);
+      return NextResponse.json({ error: 'Failed to send data' });
+    }
+  }
