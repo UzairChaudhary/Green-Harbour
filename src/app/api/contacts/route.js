@@ -4,7 +4,6 @@ import {NextResponse} from 'next/server';
 export async function GET() {
     try {
       // Extract API key from request headers (optional, if needed)
-      //const apiKey = 'pat-na1-91c699a0-e9ad-4185-83a1-7d6c6a70027f';
         const apiKey = process.env.NEXT_PUBLIC_HUBSPOT_ACCESS_TOKEN ;
         //console.log(apiKey)
         // Construct the API request URL
