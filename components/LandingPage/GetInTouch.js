@@ -21,47 +21,39 @@ export default function GetInTouch() {
       };
   return (
     <>
-    <div className='mb-40 flex flex-col items-center mx-40'>
-        <div>
-        <h1 className='mt-20 flex justify-center text-4xl font-extrabold text-green_color'>Get In Touch</h1>
-        <div className='flex text-mud_color gap-10 mt-10'>
-            <div className='flex text-mud_color flex-col gap-3'>
-                <h1>First Name</h1>
-                <input type='text' className='border rounded-md p-2 border-mud_color w-96'/>
-            </div>
-            <div className='flex text-mud_color flex-col gap-3'>
-                <h1 >Last Name</h1>
-                <input type='text' className='border border-mud_color rounded-md p-2 w-96'/>
-            </div>
+    <div className='mb-20 md:mb-40 flex flex-col items-center mx-4 md:mx-12 lg:mx-24 xl:mx-40'>
+      <div>
+        <h1 className='mt-10 md:mt-20 flex justify-center text-3xl md:text-4xl font-extrabold text-green_color'>Get In Touch</h1>
+        <div className='flex flex-col md:flex-row text-mud_color gap-10 mt-6 md:mt-10'>
+          <div className='flex flex-col gap-3'>
+            <h1>First Name</h1>
+            <input type='text' name='firstName' className='border rounded-md p-2 border-mud_color w-full md:w-96' />
+          </div>
+          <div className='flex flex-col gap-3'>
+            <h1>Last Name</h1>
+            <input type='text' name='lastName' className='border border-mud_color rounded-md p-2 w-full md:w-96' />
+          </div>
         </div>
-        <div className='flex  text-mud_color gap-10 mt-10'>
-            <div className='flex text-mud_color flex-col gap-3'>
-                <h1>Email</h1>
-                <input type='email' className='border rounded-md p-2 border-mud_color w-96'/>
-            </div>
-            <div className='flex text-mud_color flex-col gap-3'>
-                <h1 >Phone Number</h1>
-                <input type='text' className='border border-mud_color rounded-md p-2 w-96'/>
-            </div>
+        <div className='flex flex-col md:flex-row text-mud_color gap-10 mt-6 md:mt-10'>
+          <div className='flex flex-col gap-3'>
+            <h1>Email</h1>
+            <input type='email' name='email'  className='border rounded-md p-2 border-mud_color w-full md:w-96' />
+          </div>
+          <div className='flex flex-col gap-3'>
+            <h1>Phone Number</h1>
+            <input type='text' name='phoneNumber'  className='border border-mud_color rounded-md p-2 w-full md:w-96' />
+          </div>
         </div>
-        <div className='flex flex-col text-mud_color mt-10 px-2 gap-3'>
-            <h1 >Message</h1>
-            <textarea className='border border-mud_color rounded-md p-2 h-24'></textarea>
+        <div className='flex flex-col text-mud_color mt-6 md:mt-10 px-2 gap-3'>
+          <h1>Message</h1>
+          <textarea name='message' className='border border-mud_color rounded-md p-2 h-24'></textarea>
         </div>
-
-
-        <div className='flex hover:cursor-pointer px-2 mt-5 justify-end'>
-            <div
-            onClick={handlesubmit} 
-            className='bg-orange_color px-6 text-white py-1 rounded'>
-                Submit
-            </div>
+        <div className='flex justify-end mt-6 md:mt-10 px-2'>
+          <div onClick={handlesubmit} className='bg-orange_color px-6 text-white py-2 rounded cursor-pointer'>
+            Submit
+          </div>
         </div>
-        </div>
-       
-
-       
-    
+      </div>
     </div>
     </>
   )
