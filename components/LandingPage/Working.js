@@ -55,19 +55,16 @@ function StepsSection() {
   return (
     <div id='how-it-works' className="flex font-proxima-nova overflow-hidden mt-32 relative flex-col items-center px-8 py-20 min-h-[999px]">
       <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/67d3b5384c8d55b490a75ac91e5b530b4f7b151ea266faf4a2688e91095b07d7?apiKey=58b353e16f7149db9729650bdfef6357&" alt="Background" className=" absolute inset-0 w-full " />
-      <div className="relative mt-32 text-4xl font-extrabold text-white whitespace-nowrap">
+      <div className="relative mt-10 text-4xl font-extrabold text-white whitespace-nowrap">
         How it works ?
       </div>
       <div className="relative mt-5 text-2xl text-white">
         Secure your grant with just three simple steps
       </div>
-      <div className=" grid relative mt-28">
-        <div className="flex gap-5 mx-40 ">
-          {stepData.map((step) => (
-            <StepTile key={step.id} {...step} />
-          ))}
-          
-        </div>
+      <div className="grid z-10 mt-10 md:mt-28 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5"> {/* Adjusted grid layout */}
+        {stepData.map((step) => (
+          <StepTile key={step.id} {...step} />
+        ))}
       </div>
       <div className="z-10 mt-36 hover:scale-105 hover:transition-a">
       <Button/>
