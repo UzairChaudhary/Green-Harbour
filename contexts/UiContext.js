@@ -5,18 +5,8 @@ import { uiReducer } from "../reducers/uiReducer";
 export const UiContext = createContext();
 
 const initialState = {
-  isDropdownOpen: false,
   isSidebarOpen: false,
-  isUserLoggedIn: false,
-  isUserCandidate: true,
-  isLoginSidebarOpen: false,
   
-  isProfilePicUpdated: null,
-
-  searchedJob:'',
-
-  user:null,
-  token:null
 };
 
 export const UiProvider = ({ children }) => {

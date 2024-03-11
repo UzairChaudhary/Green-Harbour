@@ -47,11 +47,11 @@ function Navbar() {
 
                     {isSidebarOpen && (
                         <div>
-                            <ul className={`bg-slate-50 mobile-dialog absolute h-screen flex flex-col space-y-4 p-3 dark:bg-dark-card transition-a top-0 left-0 !rounded-xl z-30 ${isSidebarOpen && "open"}`}>
-                                <div className="flex justify-between border-b dark:border-slate-800 space-x-40 p-1">
+                            <ul className={`bg-green_color text-mud_color mobile-dialog absolute h-screen flex flex-col space-y-4 p-3 dark:bg-dark-card transition-a top-0 left-0 !rounded-xl z-30 ${isSidebarOpen && "open"}`}>
+                                <div className="flex justify-between border-b dark:border-mud_color space-x-40 p-1">
                                     <p className="uppercase">menu</p>
                                     <div
-                                        className="icon-box cursor-pointer"
+                                        className="icon-box cursor-pointer hover:text-white"
                                         onClick={() => dispatch({ type: actioTypes.closeSidebar })}
                                     >
                                         <FiDelete />
@@ -59,7 +59,7 @@ function Navbar() {
                                 </div>
                                 {links.map(({ id, linkText, url }) => (
                                     <Link key={id} href={url} end legacyBehavior>
-                                        <a onClick={() => dispatch({ type: actioTypes.closeSidebar })} className="hover:bg-gray-500 hover:text-white rounded-lg p-1 px-2">
+                                        <a onClick={() => dispatch({ type: actioTypes.closeSidebar })} className=" hover:text-white hover:bg-mud_color rounded-lg p-1 px-2">
                                             {linkText}
                                         </a>
                                     </Link>
