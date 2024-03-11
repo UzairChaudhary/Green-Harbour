@@ -268,7 +268,7 @@ export default function Page() {
             {formDisplay ? (
 
             <div
-            className="question-container bg-green_color text-white mt-10">
+            className="question-container bg-green_color z-10 text-white mt-10">
             <h2 className="question font-bold text-2xl">You{`'`}re highly likely to qualify! </h2>
             <h2>Please confirm your contact details below.</h2>
             <p>This is so your Green Harbour ECO4 Home Advisor can get in touch.</p>
