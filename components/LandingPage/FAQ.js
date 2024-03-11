@@ -29,20 +29,20 @@ export default function FAQ() {
         },
       ];
     return (
-    <div className='flex flex-col justify-center items-center mx-60 mt-40 font-proxima-nova '>
-        <h1 className='text-green_color font-extrabold text-4xl'>Frequently Asked Questions</h1>
+      <div className='flex flex-col justify-center items-center mx-4 md:mx-12 lg:mx-24 xl:mx-60 mt-10 md:mt-20 font-proxima-nova'>
+      <h1 className='text-green_color font-extrabold text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-10'>Frequently Asked Questions</h1>
 
-        <div className="hover:cursor-pointer flex flex-col gap-3 p-5 mt-10 w-full">
-            {faqData.map((faq, index) => (
-                <div key={index} className="faq-item border p-3 rounded-lg bg-green_color text-white shadow-md">
-                    <div className=" flex py-3 text-2xl justify-between  gap-20 px-10 items-center " onClick={() => toggleAccordion(index)}>
-                        <span>{faq.question}</span>
-                        {activeIndex === index ? <IoIosArrowDropup /> : <IoIosArrowDropdown />}
-                    </div>
-                    {activeIndex === index && <div className="text-base mt-3 px-10 mb-3">{faq.answer}</div>}
-                </div>
-            ))}
-        </div>
+      <div className="flex flex-col gap-3 w-full">
+        {faqData.map((faq, index) => (
+          <div key={index} className="faq-item border p-3 rounded-lg bg-green_color text-white shadow-md">
+            <div className="flex py-3 text-lg md:text-xl lg:text-2xl justify-between px-6 md:px-10 items-center cursor-pointer" onClick={() => toggleAccordion(index)}>
+              <span>{faq.question}</span>
+              {activeIndex === index ? <IoIosArrowDropup /> : <IoIosArrowDropdown />}
+            </div>
+            {activeIndex === index && <div className="text-base md:text-lg px-6 md:px-10 mb-3">{faq.answer}</div>}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
