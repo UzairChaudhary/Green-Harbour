@@ -176,9 +176,9 @@ export default function Page() {
             }
             else
             {
-                toast.error('Submission Failed')
+                toast.error(response.data.error)
             }
-        }); // Assuming your API route is named 'hubapi.js'
+        }); 
         
     }
     catch(error){
