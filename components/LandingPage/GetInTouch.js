@@ -44,7 +44,7 @@ export default function GetInTouch() {
             <input type='text' name='phoneNumber'  className='border border-mud_color rounded-md p-2 w-full md:w-96' />
           </div>
         </div>
-        <div className='flex flex-col text-mud_color mt-6 md:mt-10 px-2 gap-3'>
+        <div className='flex flex-col text-mud_color mt-6 md:mt-10 gap-3'>
           <h1>Message</h1>
           <textarea name='message' className='border border-mud_color rounded-md p-2 h-24'></textarea>
         </div>

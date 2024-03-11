@@ -189,10 +189,10 @@ export default function Page() {
   }
   return (
     <>
-    <div className='mx-20 font-proxima-nova mt-20'>
-        <h1 className='flex justify-center font-extrabold text-4xl text-mud_color'> Who Qualifies?</h1>
-        <p className='mt-10 text-lg font-bold flex justify-center text-mud_color'>You may qualify for the ECO4 grant if you meet any of the three eligibility criteria:</p>
-        <div className='flex justify-center mt-16 gap-3'>
+    <div className="max-w-3xl mx-auto px-4 font-proxima-nova mt-20">
+        <h1 className="text-4xl font-extrabold text-center text-mud_color"> Who Qualifies?</h1>
+        <p className="mt-10 text-lg font-bold text-center text-mud_color">You may qualify for the ECO4 grant if you meet any of the three eligibility criteria:</p>
+        <div className="flex flex-col items-center md:items-stretch md:flex-row justify-center md:justify-between mt-16 gap-3">
             <div className=' text-white flex flex-col w-80 hover:scale-105 hover:transition-a justify-between bg-mud_color p-8 rounded-xl'>
                 <div className='flex justify-center  flex-col items-center'>
                 <h1 className='text-2xl flex justify-center font-bold'> Qualifying Benefits</h1>
@@ -224,7 +224,7 @@ export default function Page() {
                     <Button/>
                 </div>
             </div>
-            <div className='flex flex-col hover:scale-105 hover:transition-a justify-center items-center w-80 p-8 text-white bg-mud_color rounded-xl'>
+            <div className='flex flex-col hover:scale-105 hover:transition-a justify-between w-80 p-8 text-white bg-mud_color rounded-xl'>
                 <h1 className='text-2xl flex justify-center font-bold'>NHS Referrral</h1>
                 <p className=' mt-5'>You may qualify for ECO4 benefits through an NHS referral if you or anyone in the household receive repeated medication or have medical conditions affected by the cold, such as:</p>
                 <ul className='list-disc mt-5 pl-5'>
@@ -234,7 +234,7 @@ export default function Page() {
                         <li>Weakened immunity</li>
                         
                 </ul>
-                <div className='flex flex-col items-center  mt-10'>
+                <div className='flex justify-center mt-5'>
 
                     <Button/>
                 </div>
@@ -246,19 +246,20 @@ export default function Page() {
         {/* Display this div when he is not eligible */}
         {isSubmit ? (
             <div className='container'>
+
                 {eligible ? (
-                    <div className='p-10 bg-green_color text-white w-full mx-20  rounded-lg'>
-                    <p className='text-2xl font-bold m-5 flex justify-center'>Your information is submitted successfully.</p>
-                    <p className='mt-5 text-2xl flex justify-center font-bold'>Thankyou for using our services!</p>
-                    <p className='mt-5 m-5 text-lg flex justify-center'>Green Harbour ECO4 Home Advisor will contact you soon.</p>
-                </div>
+                    <div className='py-10 px-5 bg-green_color text-white w-full mx-10  rounded-lg'>
+                        <p className='text-2xl font-bold m-5 flex justify-center'>Your information is submitted successfully.</p>
+                        <p className='m-5 text-2xl flex justify-center font-bold'>Thankyou for using our services!</p>
+                        <p className='m-5 text-lg flex justify-center'>Green Harbour ECO4 Home Advisor will contact you soon.</p>
+                    </div>
                 ):(
 
-                <div className='p-10 bg-green_color text-white w-full mx-20  rounded-lg'>
-                    <p className='text-2xl font-bold m-5 flex justify-center'>Sorry. It seems like you do not meet the criteria to claim a heating upgrade today.</p>
-                    <p className='mt-5 text-2xl flex justify-center font-bold'>Thankyou for checking</p>
-                    <p className='mt-5 m-5 text-lg flex justify-center'>If you are still confident you should be eligible, or know someone else that might qualify, please share or give us a call.</p>
-                </div>
+                    <div className='p-10 bg-green_color text-white w-full mx-20  rounded-lg'>
+                        <p className='text-2xl font-bold m-5 flex justify-center'>Sorry. It seems like you do not meet the criteria to claim a heating upgrade today.</p>
+                        <p className='mt-5 text-2xl flex justify-center font-bold'>Thankyou for checking</p>
+                        <p className='mt-5 m-5 text-lg flex justify-center'>If you are still confident you should be eligible, or know someone else that might qualify, please share or give us a call.</p>
+                    </div>
                 )}
             </div>
         ):(
