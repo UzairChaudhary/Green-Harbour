@@ -30,7 +30,7 @@ function Navbar() {
     }, []);
 
     return (
-        <nav suppressHydrationWarning={true} className="bg-green_color flex justify-between items-center pt-2">
+        <nav suppressHydrationWarning={true} className="bg-green_color flex justify-between items-center pt-2 px-4">
             {/* Logo on the left */}
             <Link href="/" suppressHydrationWarning={true}>
                 <h1 className="text-4xl p-3 font-extrabold text-mud_color">Green Harbour</h1>
