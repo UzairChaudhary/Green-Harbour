@@ -26,12 +26,12 @@ export default function Page() {
     const [notQualify, setnotQualify] = useState(false)
     
     const [questions, setQuestions] = useState([
-        "1) What is your occupancy type?",
-        "2) What is your main source of heating?",
-        "3) Has your property got central heating?",
-        "4) Is your boiler older than 15 years?",
-        "5) What type of property do you live in?",
-        "6) Does anyone living at the property claim any UK qualified benefits?",
+        "What is your occupancy type?",
+        "What is your main source of heating?",
+        "Has your property got central heating?",
+        "Is your boiler older than 15 years?",
+        "What type of property do you live in?",
+        "Does anyone living at the property claim any UK qualified benefits?",
         "",
         ""
         
@@ -118,6 +118,39 @@ export default function Page() {
     }
 
     //Case Gas
+    if (answers[1] === "Gas" && answers[2]===null && answer==="No") {
+        updateQuestionAndAnswerAtIndex(3, "What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
+        //updateQuestionAndAnswerAtIndex(4,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
+        console.log("hello")
+    }
+    if (answers[1] === "Gas" && answers[2]==="No" && options[3].includes(answer)) {
+        updateQuestionAndAnswerAtIndex(4,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
+        console.log("hello mello")
+    }
+    if(answers[1]==="Gas" && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="Yes"){
+        console.log("show form display")
+        setCurrentQuestion(currentQuestion+1)
+        handleFormDisplay()
+        return
+    }
+    if(answers[1]==="Gas" && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="No"){
+        updateQuestionAndAnswerAtIndex(5, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]); 
+        handleProceeding(index)
+        return
+    }
+    if (answers[1] === "Gas" && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer==="None of the above apply") {
+        //If none of the above apply, show form
+        setnotQualify(true)
+        return
+       
+    }
+    if (answers[1] === "Gas" && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer!=="None of the above apply") {
+        //If none of the above apply, show form
+        updateQuestionAndAnswerAtIndex(6, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
+        handleProceeding(index)
+        return
+       
+    }
     
     if(answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]===null && answer==="Yes"){
         //console.log("case 1 gas yes")
@@ -125,12 +158,13 @@ export default function Page() {
         console.log("show form display")
         setCurrentQuestion(currentQuestion+1)
         handleFormDisplay()
+        return
         
     }
     if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null && answers[4]!==null && answer==="No") {
         // 6) Does anyone living at the property claim any UK qualified benefits
         console.log('case 2 No Gas')
-        updateQuestionAndAnswerAtIndex(6, "7) Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
+        updateQuestionAndAnswerAtIndex(6, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
         console.log("updated")
         console.log(questions)
         handleProceeding(index)
@@ -145,9 +179,10 @@ export default function Page() {
         return
        
     }
+    
     if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]==="No" && answer!=="None of the above apply") {
         // Add a custom question based on previous responses
-        updateQuestionAndAnswerAtIndex(7, "8) As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
+        updateQuestionAndAnswerAtIndex(7, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
         console.log("updated")
         console.log(questions)
         
@@ -163,38 +198,38 @@ export default function Page() {
     }
     //Case Electricity
     if (answer === "Electricity") {
-        updateQuestionAndAnswerAtIndex(2, "3) What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
+        updateQuestionAndAnswerAtIndex(2, "What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
         
     }
     //if go previous and change the response from ---- to gas
-    if (answer === "Gas") {
+    // if (answer === "Gas") {
         
-        setQuestions([
-            "1) What is your occupancy type?",
-            "2) What is your main source of heating?",
-            "3) Has your property got central heating?",
-            "4) Is your boiler older than 15 years?",
-            "5) What type of property do you live in?",
-            "6) Does anyone living at the property claim any UK qualified benefits?",
-            "",
-            "",
+    //     setQuestions([
+    //         "1) What is your occupancy type?",
+    //         "2) What is your main source of heating?",
+    //         "3) Has your property got central heating?",
+    //         "4) Is your boiler older than 15 years?",
+    //         "5) What type of property do you live in?",
+    //         "6) Does anyone living at the property claim any UK qualified benefits?",
+    //         "",
+    //         "",
             
-            // Add more questions as needed
-        ]);
+    //         // Add more questions as needed
+    //     ]);
         
-        setOptions([
-            ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
-            ["Gas", "Electricity", "Oil", "Not sure"],
-            ["Yes","No"],
-            ["Yes","No","Not sure"],
-            ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"],
-            ["Yes","No"],
-            [],
-            [],
+    //     setOptions([
+    //         ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
+    //         ["Gas", "Electricity", "Oil", "Not sure"],
+    //         ["Yes","No"],
+    //         ["Yes","No","Not sure"],
+    //         ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"],
+    //         ["Yes","No"],
+    //         [],
+    //         [],
             
     
-        ]);
-    }
+    //     ]);
+    // }
     //console.log(autoProceeding)
     
 
@@ -279,49 +314,61 @@ export default function Page() {
   }
 
   const handleSubmission = () =>{
-    if(firstname===""){
-        toast.error("Please enter your first name")
-        return
-    }
-    if(lastname===""){
-        toast.error("Please enter your last name")
-        return
-    }
-    if(phonenumber===""){
-        toast.error("Please enter your phone number")
-        return
-    }
-    if(email===""){
-        toast.error("Please enter your email")
-        return
-    }
-    try{
-        const contactData = {
-            properties: {
-              firstname: firstname,
-              lastname: lastname,
-              email: email,
-              phone: phonenumber
-            }
-          };
-        axios.post('/api/contacts', contactData)
-        .then(response => {
-            //console.log(response.data);
-            if (response.data.success){
-                toast.success('Submitted Successfully')
-                seteligible(true)
-                setisSubmit(true)
-            }
-            else
-            {
-                toast.error(response.data.error)
-            }
-        }); 
+    console.log("trimQuestions")
+    const filteredQuestions = questions.filter(question => question.trim() !== "");
+    const filteredAnswers = answers.filter(answer => answer !== null);
+
+    //Update the state with filtered questions
+    setQuestions(filteredQuestions);
+    setAnswers(filteredAnswers)
+    console.log(filteredQuestions)
+    console.log(filteredAnswers)
+    toast.success('Submitted Successfully')
+    seteligible(true)
+    setisSubmit(true)
+    // if(firstname===""){
+    //     toast.error("Please enter your first name")
+    //     return
+    // }
+    // if(lastname===""){
+    //     toast.error("Please enter your last name")
+    //     return
+    // }
+    // if(phonenumber===""){
+    //     toast.error("Please enter your phone number")
+    //     return
+    // }
+    // if(email===""){
+    //     toast.error("Please enter your email")
+    //     return
+    // }
+    // try{
+    //     const contactData = {
+    //         properties: {
+    //           firstname: firstname,
+    //           lastname: lastname,
+    //           email: email,
+    //           phone: phonenumber
+    //         }
+    //       };
+    //     axios.post('/api/contacts', contactData)
+    //     .then(response => {
+    //         //console.log(response.data);
+    //         if (response.data.success){
+    //             toast.success('Submitted Successfully')
+    //             seteligible(true)
+    //             setisSubmit(true)
+    //         }
+    //         else
+    //         {
+    //             toast.error(response.data.error)
+    //         }
+    //     }); 
         
-    }
-    catch(error){
-        console.error('Error:', error);
-    }
+    // }
+    // catch(error){
+    //     console.error('Error:', error);
+    // }
     
     
   }
@@ -345,7 +392,15 @@ export default function Page() {
   const handleOptionSelect = (option) => {
     setInputValue(option); // Set input value to the selected option
     setFilteredOptions([]); // Clear filtered options
-    handleAnswer(7,option)
+    if (answers[2]==="No"){
+        setAnswers(prevAnswers => {
+            const newAnswers = [...prevAnswers];
+            newAnswers[currentQuestion] = option;
+            return newAnswers;
+        });
+        handleFormDisplay()
+    }
+    else handleAnswer(7,option)
   };
 
   const clearInput = () => {
@@ -429,11 +484,11 @@ export default function Page() {
             </div>
         ):(
             
-        <div className="container fade-in">
+        <div className="container">
             {formDisplay ? (
 
             <div
-            className="question-container bg-green_color z-10 text-white mt-10">
+            className="question-container fade-in bg-green_color z-10 text-white mt-10">
             <h2 className="question font-bold text-2xl">You{`'`}re highly likely to qualify! </h2>
             <h2>Please confirm your contact details below.</h2>
             <p>This is so your Green Harbour ECO4 Home Advisor can get in touch.</p>
@@ -481,7 +536,7 @@ export default function Page() {
                 className='rounded-md border border-mud_color p-2 text-mud_color'
                 />
             </div>
-            <div className="navigation-buttons">
+            <div className="navigation-buttons fade-in">
                 {/* <button
                     className="prev-button "
                     
@@ -501,19 +556,19 @@ export default function Page() {
             ):(
                 
             <div 
-            className="question-container mt-10 bg-green_color text-white">
-                <h2 className="question font-bold text-xl">{questions[currentQuestion]}</h2>
-                {(answers[1]==="Gas"&&currentQuestion===3) && (
+            className="question-container fade-in mt-10 bg-green_color text-white">
+                <h2 className="question font-bold text-xl">{currentQuestion+1}) {questions[currentQuestion]}</h2>
+                {(answers[1]==="Gas"&&answers[2]==="Yes"&&currentQuestion===3) && (
                     <p className="answer mb-5 text-lg">
                     If unsure if the boiler qualifies, please visit <a href='https://www.homeheatingguide.co.uk/efficiency-tables' target='_blank' className='text-mud_color'>https://www.homeheatingguide.co.uk/efficiency-tables</a> and check that efficiency rating is below 86%
                     </p>
                 )}
-                {(answers[1]==="Gas"&&currentQuestion===5) && (
+                {(answers[1]==="Gas"&&answers[2]==="Yes"&&currentQuestion===5) && (
                     <p className="answer mb-5 text-lg">
                         (This could include Pension Credit, Child benefits, Working Tax Credits, income support etc.)
                     </p>
                 )}
-                {questions[currentQuestion] === "8) As you qualify through a FLEX route, please type your local council below to see if they are taking part" ? (
+                {questions[currentQuestion] === "As you qualify through a FLEX route, please type your local council below to see if they are taking part" ? (
                     <div className='options text-mud_color'>
                         
                         {/* <input
