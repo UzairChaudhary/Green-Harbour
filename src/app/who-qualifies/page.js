@@ -117,33 +117,39 @@ export default function Page() {
         return
     }
 
-    //Case Gas
+    //Case Gas ->No
     if (answers[1] === "Gas" && answers[2]===null && answer==="No") {
         updateQuestionAndAnswerAtIndex(3, "What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
         //updateQuestionAndAnswerAtIndex(4,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
-        console.log("hello")
+        
     }
+    //Case Gas -> No -> Property
     if (answers[1] === "Gas" && answers[2]==="No" && options[3].includes(answer)) {
         updateQuestionAndAnswerAtIndex(4,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
-        console.log("hello mello")
+        
     }
+    // Case Gas -> No -> Property -> Claim UK Benefits Yes
     if(answers[1]==="Gas" && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="Yes"){
         console.log("show form display")
         setCurrentQuestion(currentQuestion+1)
         handleFormDisplay()
         return
     }
+    // Case Gas -> No -> Property -> Claim UK Benefits No
     if(answers[1]==="Gas" && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="No"){
         updateQuestionAndAnswerAtIndex(5, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]); 
         handleProceeding(index)
         return
     }
+    // Case Gas -> No -> Property -> Claim UK Benefits No -> None of the above apply
     if (answers[1] === "Gas" && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer==="None of the above apply") {
         //If none of the above apply, show form
         setnotQualify(true)
         return
        
     }
+    // Case Gas -> No -> Property -> Claim UK Benefits No -> Other than None of the above apply
+
     if (answers[1] === "Gas" && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer!=="None of the above apply") {
         //If none of the above apply, show form
         updateQuestionAndAnswerAtIndex(6, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
@@ -151,7 +157,7 @@ export default function Page() {
         return
        
     }
-    
+    // Case Gas -> Yes -> Property -> Claim UK Benefits Yes
     if(answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]===null && answer==="Yes"){
         //console.log("case 1 gas yes")
         
@@ -161,6 +167,7 @@ export default function Page() {
         return
         
     }
+    // Case Gas -> Yes -> Property -> Claim UK Benefits No
     if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null && answers[4]!==null && answer==="No") {
         // 6) Does anyone living at the property claim any UK qualified benefits
         console.log('case 2 No Gas')
@@ -172,14 +179,14 @@ export default function Page() {
 
        
     }
-    
+    // Case Gas -> Yes -> Property -> Claim UK Benefits No -> None of above apply
     if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&&answers[5]!==null&& answer==="None of the above apply") {
         //If none of the above apply, show form
         setnotQualify(true)
         return
        
     }
-    
+    // Case Gas -> Yes -> Property -> Claim UK Benefits No -> Other than None of above apply
     if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]==="No" && answer!=="None of the above apply") {
         // Add a custom question based on previous responses
         updateQuestionAndAnswerAtIndex(7, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
@@ -189,6 +196,7 @@ export default function Page() {
 
        
     }
+    // Case Gas ->Yes ->Boiler is not older than 15 years
     if(answers[1] === "Gas" && answers[2]!==null && answer==="No"){
         //if boiler is not older than 15 years, he will not qualify
         console.log("Boiler doesn't qualify")
