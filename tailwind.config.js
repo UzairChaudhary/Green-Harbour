@@ -23,7 +23,7 @@ module.exports = {
       },
       fontFamily: {
         'proxima-nova': ['Proxima Nova', 'sans-serif'],
-        'bebas-regular': ['Bebas Regular', 'serif'],
+        'bebas-regular': ['Bebas Regular', 'sans-serif'],
       },
       
     },

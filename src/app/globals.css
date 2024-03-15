@@ -21,6 +21,8 @@
 }
 @font-face {
   font-family: 'Bebas Regular';
+  font-weight: 400;
+  
   src: url('/public/fonts/Bebas-Regular.ttf') format('ttf');
 }
 
