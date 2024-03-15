@@ -4,10 +4,10 @@ import { FiDelete } from "react-icons/fi";
 import { useUiContext } from "../../contexts/UiContext";
 import { actioTypes } from "../../reducers/uiReducer";
 import Link from 'next/link';
+import Image from 'next/image';
 import { links } from "../../data/links";
 import ActiveLink from './ActiveLink';
 import Button from '../common/button';
-import Image from 'next/image';
 function Navbar() {
     const [isMobile, setIsMobile] = useState(false);
     const { dispatch, isSidebarOpen } = useUiContext();

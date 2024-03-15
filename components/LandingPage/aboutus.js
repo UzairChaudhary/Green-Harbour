@@ -4,7 +4,7 @@ import Button from '../common/button'
 export default function Aboutus() {
   return (
     <div id='aboutus' className='flex flex-col mx-4 md:mx-12 lg:mx-24 xl:mx-40 mt-10 md:mt-20 font-proxima-nova text-mud_color'>
-  <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-center'>About Us</h1>
+  <h1 className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-center'>About Us</h1>
   
   <div className="mt-10">
     <h2 className='text-xl md:text-2xl font-bold'>Who we are</h2>

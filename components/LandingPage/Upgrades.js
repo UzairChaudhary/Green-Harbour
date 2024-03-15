@@ -12,13 +12,13 @@ export default function  Upgrades () {
     {homeServicesData.map((service) => (
       <div className="flex flex-col justify-center gap-3 p-4 rounded-md" key={service.id}> {/* Adjusted gap and padding */}
         <h2 className="text-xl flex justify-center md:text-2xl lg:text-3xl font-bold">{service.heading}</h2> {/* Adjusted text size */}
-        <img src={service.imageSrc} alt={service.heading} className="w-full hover:cursor-pointer hover:scale-105 transition-transform" /> {/* Adjusted image size and added hover effect */}
+        <img src={service.imageSrc} alt={service.heading} className="w-full hover:cursor-pointer hover:scale-105 transition-a" /> {/* Adjusted image size and added hover effect */}
         <p className='text-base md:text-lg flex justify-center items-center text-center'>{service.description}</p> {/* Adjusted text size */}
       </div>
     ))}
   </div>
 
-  <div className='flex justify-center mt-8 md:mt-10'> {/* Adjusted top margin */}
+  <div className='flex justify-center mt-8 md:mt-10 hover:transition-a'> {/* Adjusted top margin */}
     <Button />
   </div>
 </div>

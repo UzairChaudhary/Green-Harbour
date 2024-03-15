@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Toaster/>
-        <NextTopLoader color='#EA580C' />
+        <NextTopLoader color='#176533' />
         <Navbar/>
         {children}
         <Footer/>

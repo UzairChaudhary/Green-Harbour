@@ -16,7 +16,7 @@ export default function FAQ() {
     
     return (
       <div className='flex flex-col justify-center items-center mx-4 md:mx-12 lg:mx-24 xl:mx-60 mt-10 md:mt-20 font-proxima-nova'>
-      <h1 className='text-mud_color font-extrabold text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-10'>Frequently Asked Questions</h1>
+      <h1 className='text-mud_color font-extrabold text-xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 md:mb-10'>Frequently Asked Questions</h1>
 
       <div className="flex flex-col gap-3 w-full">
         {faqData.map((faq, index) => (

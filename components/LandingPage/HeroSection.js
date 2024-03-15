@@ -5,10 +5,10 @@ export default function HeroSection() {
   return (
     <div className="relative bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center" style={{backgroundImage: "url('/landingpage/herosection.png')"}}>
         <div className="flex flex-col justify-center items-center">
-            <div className='text-center mb-10 mt-10 text-4xl md:text-6xl text-mud_color font-bebas-regular font-bold uppercase '> {/* Adjusted top and bottom margins */}
-                <h1 className="mb-5">Enhance your home</h1> {/* Adjusted text size */}
-                <h1 className="mb-5">at no cost with Green Harbour ECO4 </h1> {/* Adjusted text size */}
-                <h1 className="mb-8">Government Grant Scheme!</h1> {/* Adjusted text size */}
+            <div className='text-center mb-10 mt-10 text-4xl md:text-7xl text-mud_color font-bebas-regular  uppercase -tracking-wide  '> {/* Adjusted top and bottom margins */}
+                <h1 className="mb-5">Enhance your home</h1> 
+                <h1 className="mb-5">at no cost with Green Harbour ECO4 </h1> 
+                <h1 className="mb-8">Government Grant Scheme!</h1> 
             </div>
             <div className='text-center mt-20'> {/* Adjusted top margin */}
                 <p className="text-lg text-white font-proxima-nova font-bold mt-2">Explore how you can convert your home into an energy-efficient </p> {/* Adjusted text size */}
