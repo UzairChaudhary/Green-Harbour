@@ -487,11 +487,11 @@ export default function Page() {
   };
   return (
     <>
-    <div className="max-w-3xl mx-auto px-4 font-proxima-nova mt-20">
+    <div className=" mx-auto px-4 font-proxima-nova mt-20">
         <h1 className="text-4xl font-extrabold text-center text-mud_color"> Who Qualifies?</h1>
         <p className="mt-10 text-lg font-bold text-center text-mud_color">You may qualify for the ECO4 grant if you meet any of the three eligibility criteria:</p>
-        <div className="flex flex-col items-center md:items-stretch md:flex-row justify-center md:justify-between mt-16 gap-3">
-            <div className=' text-white flex flex-col w-80 hover:scale-105 hover:transition-a justify-between bg-mud_color p-8 rounded-xl'>
+        <div className="flex flex-col items-center md:items-stretch md:flex-row justify-center md:justify-center mt-16 gap-3">
+            <div className=' text-white flex flex-col hover:scale-105 w-80 hover:transition-a justify-between bg-mud_color p-8 rounded-xl'>
                 <div className='flex justify-center  flex-col items-center'>
                 <h1 className='text-2xl flex justify-center font-bold'> Qualifying Benefits</h1>
                 <ul className='list-disc mt-5 pl-5'>
@@ -522,7 +522,7 @@ export default function Page() {
                     <Button/>
                 </div>
             </div>
-            <div className='flex flex-col hover:scale-105 hover:transition-a justify-between w-80 p-8 text-white bg-mud_color rounded-xl'>
+            <div className='flex flex-col hover:scale-105 hover:transition-a w-80 justify-between p-8 text-white bg-mud_color rounded-xl'>
                 <h1 className='text-2xl flex justify-center font-bold'>NHS Referrral</h1>
                 <p className=' mt-5'>You may qualify for ECO4 benefits through an NHS referral if you or anyone in the household receive repeated medication or have medical conditions affected by the cold, such as:</p>
                 <ul className='list-disc mt-5 pl-5'>
