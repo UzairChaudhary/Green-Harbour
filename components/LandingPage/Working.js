@@ -34,7 +34,7 @@ const stepData = [
 function StepTile({ title, heading, description, imgSrc, imgAlt }) {
   return (
     
-      <div className="p-6 text-white rounded-3xl hover:scale-105 hover:cursor-pointer transition-a shadow-sm bg-green_color w-96">
+      <div className="p-6 text-white rounded-3xl hover:scale-105 hover:cursor-pointer transition-a shadow-sm bg-mud_color w-96">
         
         <div className="flex flex-col px-2 ">
           <div className="text-xl font-semibold">{title}</div>
@@ -54,7 +54,7 @@ function StepTile({ title, heading, description, imgSrc, imgAlt }) {
 function StepsSection() {
   return (
     <div id='how-it-works' className="flex font-proxima-nova overflow-hidden mt-32 relative flex-col items-center px-8 py-20 min-h-[999px]">
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/67d3b5384c8d55b490a75ac91e5b530b4f7b151ea266faf4a2688e91095b07d7?apiKey=58b353e16f7149db9729650bdfef6357&" alt="Background" className=" absolute inset-0 w-full " />
+      <img loading="lazy" src="/landingpage/working.png" alt="Background" className=" absolute inset-0 w-full " />
       <div className="relative md:mt-10 xl:mt-20 text-4xl font-extrabold text-white whitespace-nowrap">
         How it works ?
       </div>
