@@ -69,37 +69,6 @@ export default function Page() {
     };
     
 
-    // useEffect(() => {
-    
-    //     console.log(answers)
-
-        
-    // }, [answers])
-
-    // useEffect(() => {
-    //     if(questions[6]){
-    //         //console.log(questions)
-    //         //console.log(options)
-    //         console.log(currentQuestion)
-    //         handleProceeding(currentQuestion)
-            
-    //     }
-        
-    
-    // }, [questions])
-    // useEffect(() => {
-    //     if(trimQuestions){
-    //         console.log("trimQuestions")
-    //         const filteredQuestions = questions.filter(question => question.trim() !== "");
-
-    //         // Update the state with filtered questions
-    //         setQuestions(filteredQuestions);
-    //         setCurrentQuestion(questions.length-1)
-    //         console.log(currentQuestion)
-    //         handleProceeding(currentQuestion)
-    //     }
-    // }, [trimQuestions])
-
 
 
   const handleAnswer = (index, answer) => {
@@ -118,31 +87,30 @@ export default function Page() {
     }
 
     //Case Gas ->No
-    if (answers[1] === "Gas" && answers[2]===null && answer==="No") {
+    if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]===null && answer==="No") {
         updateQuestionAndAnswerAtIndex(3, "What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
-        //updateQuestionAndAnswerAtIndex(4,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
         
     }
     //Case Gas -> No -> Property
-    if (answers[1] === "Gas" && answers[2]==="No" && options[3].includes(answer)) {
+    if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && options[3].includes(answer)) {
         updateQuestionAndAnswerAtIndex(4,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
         
     }
     // Case Gas -> No -> Property -> Claim UK Benefits Yes
-    if(answers[1]==="Gas" && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="Yes"){
+    if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="Yes"){
         console.log("show form display")
         setCurrentQuestion(currentQuestion+1)
         handleFormDisplay()
         return
     }
     // Case Gas -> No -> Property -> Claim UK Benefits No
-    if(answers[1]==="Gas" && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="No"){
+    if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="No"){
         updateQuestionAndAnswerAtIndex(5, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]); 
         handleProceeding(index)
         return
     }
     // Case Gas -> No -> Property -> Claim UK Benefits No -> None of the above apply
-    if (answers[1] === "Gas" && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer==="None of the above apply") {
+    if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer==="None of the above apply") {
         //If none of the above apply, show form
         setnotQualify(true)
         return
@@ -150,7 +118,7 @@ export default function Page() {
     }
     // Case Gas -> No -> Property -> Claim UK Benefits No -> Other than None of the above apply
 
-    if (answers[1] === "Gas" && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer!=="None of the above apply") {
+    if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer!=="None of the above apply") {
         //If none of the above apply, show form
         updateQuestionAndAnswerAtIndex(6, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
         handleProceeding(index)
@@ -158,7 +126,7 @@ export default function Page() {
        
     }
     // Case Gas -> Yes -> Property -> Claim UK Benefits Yes
-    if(answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]===null && answer==="Yes"){
+    if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]===null && answer==="Yes"){
         //console.log("case 1 gas yes")
         
         console.log("show form display")
@@ -168,7 +136,7 @@ export default function Page() {
         
     }
     // Case Gas -> Yes -> Property -> Claim UK Benefits No
-    if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null && answers[4]!==null && answer==="No") {
+    if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null && answers[4]!==null && answer==="No") {
         // 6) Does anyone living at the property claim any UK qualified benefits
         console.log('case 2 No Gas')
         updateQuestionAndAnswerAtIndex(6, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
@@ -180,14 +148,14 @@ export default function Page() {
        
     }
     // Case Gas -> Yes -> Property -> Claim UK Benefits No -> None of above apply
-    if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&&answers[5]!==null&& answer==="None of the above apply") {
+    if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null&& answers[4]!==null&&answers[5]!==null&& answer==="None of the above apply") {
         //If none of the above apply, show form
         setnotQualify(true)
         return
        
     }
     // Case Gas -> Yes -> Property -> Claim UK Benefits No -> Other than None of above apply
-    if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]==="No" && answer!=="None of the above apply") {
+    if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]==="No" && answer!=="None of the above apply") {
         // Add a custom question based on previous responses
         updateQuestionAndAnswerAtIndex(7, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
         console.log("updated")
@@ -197,7 +165,7 @@ export default function Page() {
        
     }
     // Case Gas ->Yes ->Boiler is not older than 15 years
-    if(answers[1] === "Gas" && answers[2]!==null && answer==="No"){
+    if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answer==="No"){
         //if boiler is not older than 15 years, he will not qualify
         console.log("Boiler doesn't qualify")
         setnotQualify(true)
@@ -209,6 +177,48 @@ export default function Page() {
         updateQuestionAndAnswerAtIndex(2, "What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
         
     }
+    //Case Electricity  -> Property
+    if (answers[1] === "Electricity" && options[2].includes(answer)) {
+        updateQuestionAndAnswerAtIndex(3,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
+        
+    }
+    //Case Electricity -> Property -> Claim UK Benefits Yes
+    if(answers[1] === "Electricity" && answers[2]!==null && answers[3]===null && answer==="Yes"){
+       
+        let allquestions = questions.slice(0,4)
+        setQuestions(allquestions)
+        console.log(allquestions)
+        console.log("show form display")
+        setCurrentQuestion(currentQuestion+1)
+        handleFormDisplay()
+        return
+        
+    }
+    //Case Electricity -> Property -> Claim UK Benefits No
+    if(answers[1] === "Electricity" && answers[2]!==null && answers[3]===null && answer==="No"){
+       
+        updateQuestionAndAnswerAtIndex(4, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
+        handleProceeding(index) 
+        return
+        
+    }
+    //Case Electricity -> Property -> Claim Uk Benefits No -> None of above apply
+    if (answers[1] === "Electricity" && answers[2]!==null && answers[3]==="No" && (answers[4]===null || answers[4]==="None of the above apply")&& answer==="None of the above apply") {
+        //If none of the above apply, show form
+        setnotQualify(true)
+        return
+       
+    }
+    //Case Electricity -> Property -> Claim Uk Benefits No -> Other than None of above apply
+    if (answers[1] === "Electricity" && answers[2]!==null && answers[3]==="No" && (answers[4]===null || answers[4]==="None of the above apply")&& answer!=="None of the above apply") {
+        updateQuestionAndAnswerAtIndex(5, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
+        
+    }
+
+
+
+
+
     //if go previous and change the response from ---- to gas
     // if (answer === "Gas") {
         
@@ -565,19 +575,24 @@ export default function Page() {
                 
             <div 
             className="question-container fade-in mt-10 bg-green_color text-white">
-                <h2 className="question font-bold text-xl">{currentQuestion+1}) {questions[currentQuestion]}</h2>
-                {(answers[1]==="Gas"&&answers[2]==="Yes"&&currentQuestion===3) && (
-                    <p className="answer mb-5 text-lg">
+                <h2 className="question fade-in font-bold text-xl">{currentQuestion+1}) {questions[currentQuestion]}</h2>
+                {((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure")&&answers[2]==="Yes"&&currentQuestion===3) && (
+                    <p className="answer fade-in mb-5 text-lg">
                     If unsure if the boiler qualifies, please visit <a href='https://www.homeheatingguide.co.uk/efficiency-tables' target='_blank' className='text-mud_color'>https://www.homeheatingguide.co.uk/efficiency-tables</a> and check that efficiency rating is below 86%
                     </p>
                 )}
-                {(answers[1]==="Gas"&&answers[2]==="Yes"&&currentQuestion===5) && (
-                    <p className="answer mb-5 text-lg">
+                {(((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure")&&answers[2]==="Yes"&&currentQuestion===5)||(answers[1]==="Electricity"&&options[2].includes(answers[2])&&currentQuestion===3)) && (
+                    <p className="answer fade-in mb-5 text-lg">
+                        (This could include Pension Credit, Child benefits, Working Tax Credits, income support etc.)
+                    </p>
+                )}
+                {((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure")&&answers[2]==="No"&&currentQuestion===4) && (
+                    <p className="answer fade-in mb-5 text-lg">
                         (This could include Pension Credit, Child benefits, Working Tax Credits, income support etc.)
                     </p>
                 )}
                 {questions[currentQuestion] === "As you qualify through a FLEX route, please type your local council below to see if they are taking part" ? (
-                    <div className='options text-mud_color'>
+                    <div className='options fade-in text-mud_color'>
                         
                         {/* <input
                             type="text"
@@ -588,13 +603,13 @@ export default function Page() {
                             placeholder='Type or select an option'
                         /> */}
 
-                      <div className="relative w-full">
+                      <div className="relative fade-in w-full">
                             {/* Input field */}
                             <input
                             type="text"
                             value={inputValue}
                             onChange={handleInputChange}
-                            className="w-full rounded-md border border-mud_color p-2 pr-8 text-mud_color"
+                            className="w-full fade-in rounded-md border border-mud_color p-2 pr-8 text-mud_color"
                             placeholder="Type or select an option"
                             />
                             {/* Delete icon */}
@@ -608,7 +623,7 @@ export default function Page() {
                         </div>
                         
                         {/* Display filtered options as suggestions */}
-                        <div className='bg-white rounded-md' style={{ maxHeight: "200px", overflow: "auto", marginTop: "5px" }}>
+                        <div className='bg-white fade-in rounded-md' style={{ maxHeight: "200px", overflow: "auto", marginTop: "5px" }}>
                             {filteredOptions.map((option, index) => (
                             <div key={index} className='hover:bg-mud_color hover:text-white' onClick={() => handleOptionSelect(option)} style={{ padding: "5px", cursor: "pointer" }}>
                                 {option}
@@ -624,7 +639,7 @@ export default function Page() {
                 {options[currentQuestion].map((option, index) => (
                     
 
-                    <label key={index} className={`rounded-lg flex items-center option ${answers[currentQuestion] === option ? 'selected' : ''}`}>
+                    <label key={index} className={`fade-in rounded-lg flex items-center option ${answers[currentQuestion] === option ? 'selected' : ''}`}>
                     <input
                         type="radio"
                         hidden
@@ -633,7 +648,7 @@ export default function Page() {
                         checked={answers[currentQuestion] === option}
                         onChange={() => handleAnswer(currentQuestion, option)}
                     />
-                    <span className={`option-letter border  rounded-md px-3 p-2 ${answers[currentQuestion] === option ? 'selected' : ''}`}>{String.fromCharCode(65 + index)}</span>
+                    <span className={`option-letter border fade-in rounded-md px-3 p-2 ${answers[currentQuestion] === option ? 'selected' : ''}`}>{String.fromCharCode(65 + index)}</span>
                     {option}
                     </label>
                     
@@ -643,7 +658,7 @@ export default function Page() {
                 {notQualify && (
                     <div className="navigation-buttons">
                     <button
-                    className="submit-button "
+                    className="submit-button fade-in "
                     
                     onClick={handleSubmitButton}
                     >
