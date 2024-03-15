@@ -17,6 +17,8 @@ module.exports = {
       },
       colors: {
         green_color: '#73BC78',//'#87995C', // light Green color
+        
+        light_green:'#F1F8ED',
         orange_color: '#EA580C', // Orange color
         mud_color :'#176533'// '#474038', //dark green Hero Section Heading Color
           

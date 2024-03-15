@@ -3,7 +3,11 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../../components/common/button'
 import './Questions.css'; // Import CSS file for styling
 import GetInTouch from '../../../components/LandingPage/GetInTouch';
-import {toast} from 'react-hot-toast'
+
+import {toast} from 'react-hot-toast';
+import { IoClose } from 'react-icons/io5';
+
+import { council_options } from '../../../data/council';
 const axios = require('axios');
 
 export default function Page() {
@@ -18,7 +22,8 @@ export default function Page() {
     const [isSubmit, setisSubmit] = useState(false)
     const [formDisplay, setformDisplay] = useState(false)
     const [eligible, seteligible] = useState(false)
-    const [autoProceeding, setautoProceeding] = useState(true);
+
+    const [notQualify, setnotQualify] = useState(false)
     
     const [questions, setQuestions] = useState([
         "1) What is your occupancy type?",
@@ -66,18 +71,10 @@ export default function Page() {
 
     // useEffect(() => {
     
-    //     if(answers[1]==="Gas" && answers[5]==="No"){
-    //         setautoProceeding(false)
-
-    //         console.log("answers[5]==='No'")
-    //         updateQuestionAndAnswerAtIndex(6, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through a NHS referral", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
-    //         console.log(questions.length) //7
-    //         // console.log(currentQuestion) //5
-    //         // handleProceeding(currentQuestion)
-    //     }
+    //     console.log(answers)
 
         
-    // }, [answers,questions])
+    // }, [answers])
 
     // useEffect(() => {
     //     if(questions[6]){
@@ -90,11 +87,24 @@ export default function Page() {
         
     
     // }, [questions])
-    
+    // useEffect(() => {
+    //     if(trimQuestions){
+    //         console.log("trimQuestions")
+    //         const filteredQuestions = questions.filter(question => question.trim() !== "");
+
+    //         // Update the state with filtered questions
+    //         setQuestions(filteredQuestions);
+    //         setCurrentQuestion(questions.length-1)
+    //         console.log(currentQuestion)
+    //         handleProceeding(currentQuestion)
+    //     }
+    // }, [trimQuestions])
+
 
 
   const handleAnswer = (index, answer) => {
-    
+    setnotQualify(false)
+    console.log(answer)
     setAnswers(prevAnswers => {
         const newAnswers = [...prevAnswers];
         newAnswers[index] = answer;
@@ -103,16 +113,36 @@ export default function Page() {
     //Case Social Tenant
     if(answer==="Social Tenant") //show submit button
     {
+        setnotQualify(true)
         return
     }
 
     //Case Gas
-    if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answer==="No") {
-        // Add a custom question based on previous responses
+    
+    if(answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]===null && answer==="Yes"){
+        //console.log("case 1 gas yes")
+        
+        console.log("show form display")
+        setCurrentQuestion(currentQuestion+1)
+        handleFormDisplay()
+        
+    }
+    if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null && answers[4]!==null && answer==="No") {
+        // 6) Does anyone living at the property claim any UK qualified benefits
+        console.log('case 2 No Gas')
         updateQuestionAndAnswerAtIndex(6, "7) Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
         console.log("updated")
         console.log(questions)
+        handleProceeding(index)
+        return
 
+       
+    }
+    
+    if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&&answers[5]!==null&& answer==="None of the above apply") {
+        //If none of the above apply, show form
+        setnotQualify(true)
+        return
        
     }
     if (answers[1] === "Gas" && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]==="No" && answer!=="None of the above apply") {
@@ -124,11 +154,19 @@ export default function Page() {
 
        
     }
+    if(answers[1] === "Gas" && answers[2]!==null && answer==="No"){
+        //if boiler is not older than 15 years, he will not qualify
+        console.log("Boiler doesn't qualify")
+        setnotQualify(true)
+        return
+        
+    }
     //Case Electricity
     if (answer === "Electricity") {
         updateQuestionAndAnswerAtIndex(2, "3) What type of property do you live in?", ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"]);
         
     }
+    //if go previous and change the response from ---- to gas
     if (answer === "Gas") {
         
         setQuestions([
@@ -157,71 +195,79 @@ export default function Page() {
     
         ]);
     }
-    if(autoProceeding){
+    //console.log(autoProceeding)
+    
 
-        handleProceeding(index)
-    }
+    handleProceeding(index)
+    
     
 
     }
     const handleProceeding = (index) => {
         console.log("index: ",index)
-        console.log("Questions Length: ",questions.length-1)
+        console.log("no of Questions: ",questions.length)
+        console.log(questions)
+        
         if (index < questions.length-1) {
             setCurrentQuestion(index + 1);
             }
         if (index===questions.length-1) {
+            setCurrentQuestion(currentQuestion+1)
             handleFormDisplay()
         }
-        //setautoProceeding(true)
+       // console.log(answers)
+        
     }
 
     const handleFormDisplay = () =>{
         setformDisplay(true)
     }
   const handleNextQuestion = () => {
+    handleAnswer(currentQuestion,answers[currentQuestion])
     //if questions completed, show contact form 
-    if(currentQuestion===questions.length-1){
-        setCurrentQuestion(currentQuestion+1)
-        handleFormDisplay()
-    }
-    else setCurrentQuestion(currentQuestion + 1);
-  };
+//     if(currentQuestion===questions.length-1){
+//         setCurrentQuestion(currentQuestion+1)
+//         handleFormDisplay()
+//     }
+//     else setCurrentQuestion(currentQuestion + 1);
+//   
+};
+
 
   const handlePrevQuestion = () => {
     //automatically change back questions if option is not electricity
+    console.log(questions)
+    console.log(currentQuestion)
     if(formDisplay){
         setformDisplay(false)
     }
-    if (answers[currentQuestion - 1] !== "Electricity") {
+    if (answers[1] !== "Electricity") {
         // Reset questions and options
-        setQuestions([
-            "1) What is your occupancy type?",
-            "2) What is your main source of heating?",
-            "3) Has your property got central heating?",
-            "4) Is your boiler older than 18 years?",
-            "5) What type of property do you live in?",
-            "6) Does anyone living at the property claim any UK qualified benefits?",
-            "",
-            "",
-            "",
-            ""
-            // Add more questions as needed
-        ]);
+        // setQuestions([
+        //     "1) What is your occupancy type?",
+        //     "2) What is your main source of heating?",
+        //     "3) Has your property got central heating?",
+        //     "4) Is your boiler older than 15 years?",
+        //     "5) What type of property do you live in?",
+        //     "6) Does anyone living at the property claim any UK qualified benefits?",
+        //     "",
+        //     "",
+            
+        //     // Add more questions as needed
+        // ]);
         
-        setOptions([
-            ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
-            ["Gas", "Electricity", "Oil", "Not sure"],
-            ["Yes","No"],
-            ["Yes","No","Not sure"],
-            ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"],
-            ["Yes","No"],
-            [],
-            [],
-            [],
-            [],
+        // setOptions([
+        //     ["Homeowner", "Private Tenant", "Social Tenant", "Other"],
+        //     ["Gas", "Electricity", "Oil", "Not sure"],
+        //     ["Yes","No"],
+        //     ["Yes","No","Not sure"],
+        //     ["Detached House", "Semi-Detached House", "Terraced House", "Flat/Apartment", "Bungalow", "Other"],
+        //     ["Yes","No"],
+        //     [],
+        //     [],
+            
     
-        ]);
+        // ]);
     }
     setCurrentQuestion(currentQuestion - 1 < 0 ? 0 : currentQuestion - 1);
     
@@ -280,192 +326,7 @@ export default function Page() {
     
   }
 
-  const council_options = [
-    "Aberdeen City Council",
-    "Aberdeenshire Council",
-    "Amber Valley Borough Council",
-    "Angus Council",
-    "Ashfield District Council",
-    "Aylesbury Vale District Council",
-    "Babergh District Council",
-    "Barrow-in-Furness Borough Council",
-    "Basingstoke and Deane Borough Council",
-    "Bath and North East Somerset Council",
-    "Birmingham City Council",
-    "Bolsover District Council",
-    "Bolton Metropolitan Borough Council",
-    "Boston Borough Council",
-    "Bristol City Council",
-    "Broadland District Council",
-    "Buckinghamshire County Council",
-    "Bury Metropolitan Borough Council",
-    "Calderdale Metropolitan Borough Council",
-    "Cambridgeshire County Council",
-    "Cannock Chase District Council",
-    "Cardiff Council",
-    "Carmarthenshire County Council",
-    "Ceredigion County Council",
-    "Cheltenham Borough Council",
-    "Cherwell District Council",
-    "Cheshire East Council (Unitary)",
-    "Cheshire West and Chester Council",
-    "Chesterfield Borough Council",
-    "Chiltern District Council",
-    "City of Lincoln Council",
-    "Conwy County Borough Council",
-    "Cornwall Council (Unitary)",
-    "Cotswold District Council",
-    "Coventry City Council",
-    "Dacorum Council",
-    "Darlington Borough Council",
-    "Denbighshire County Council",
-    "Derbyshire County Council",
-    "Derbyshire Dales District Council",
-    "Doncaster Metropolitan Borough Council",
-    "Dudley Metropolitan Borough Council",
-    "Dumfries and Galloway Council",
-    "Dundee City Council",
-    "Durham County Council",
-    "East Ayrshire Council",
-    "East Devon District Council",
-    "East Dunbartonshire Council",
-    "East Hampshire District Council",
-    "East Lindsey District Council",
-    "East Renfrewshire Council",
-    "East Staffordshire Borough Council",
-    "East Suffolk Council",
-    "Eastleigh Borough Council",
-    "Eden District Council",
-    "Erewash Borough Council",
-    "Exeter City Council",
-    "Fareham Borough Council",
-    "Fenland District Council",
-    "Flintshire County Council",
-    "Forest of Dean District Council",
-    "Fylde Borough Council",
-    "Gloucester City Council",
-    "Gloucestershire County Council",
-    "Gosport Borough Council",
-    "Gwynedd County Council",
-    "Halton Borough Council",
-    "Hampshire County Council",
-    "Harborough District Council",
-    "Hart District Council",
-    "Havant Borough Council",
-    "Herefordshire Council",
-    "Hertsmere Borough Council",
-    "High Peak Borough Council",
-    "Hinckley and Bosworth Borough Council",
-    "Ipswich Borough Council",
-    "Isle of Anglesey County Council",
-    "King's Lynn and West Norfolk Borough Council",
-    "Knowsley Metropolitan Borough Council",
-    "Leicester City Council",
-    "Leicestershire County Council",
-    "Lichfield District Council",
-    "Liverpool",
-    "London Borough of Ealing",
-    "London Borough of Hammersmith & Fulham",
-    "London Borough of Waltham Forest",
-    "Luton Borough Council",
-    "Mendip District Council",
-    "Merthyr Tydfil County Borough Council",
-    "Mid Devon District Council",
-    "Mid Suffolk District Council",
-    "Midlothian Council",
-    "Monmouthshire County Council",
-    "Neath Port Talbot County Borough Council",
-    "New Forest District Council",
-    "Newcastle-Under-Lyme District Council",
-    "Newcastle-upon-Tyne City Council",
-    "Norfolk County Council",
-    "North Devon Council",
-    "North East Derbyshire District Council",
-    "North Lanarkshire Council",
-    "North Lincolnshire Council",
-    "North Norfolk District Council",
-    "North Somerset Council",
-    "North Tyneside Metropolitan Borough Council",
-    "Northampton Borough Council",
-    "Northamptonshire County Council",
-    "Northumberland Council",
-    "Nottingham",
-    "Oldham Metropolitan Borough Council",
-    "Oxford City Council",
-    "Oxfordshire County Council",
-    "Pembrokeshire County Council",
-    "Perth and Kinross Council",
-    "Peterborough City Council",
-    "Plymouth City Council",
-    "Portsmouth City Council",
-    "Powys County Council",
-    "Renfrewshire Council",
-    "Rochdale Metropolitan Borough Council",
-    "Rother District Council",
-    "Rotherham Metropolitan Borough Council",
-    "Rushmoor Borough Council",
-    "Rutland County Council",
-    "Salford City Council",
-    "Sandwell Metropolitan Borough Council",
-    "Scottish Borders Council",
-    "Sedgemoor District Council",
-    "Sefton Metropolitan Borough Council",
-    "Sheffield City Council",
-    "Shetland Islands Council",
-    "Shropshire Council - Unitary",
-    "Somerset County Council",
-    "South Ayrshire Council",
-    "South Buckinghamshire District Council",
-    "South Derbyshire District Council",
-    "South Gloucestershire Council",
-    "South Hams District Council",
-    "South Lanarkshire Council",
-    "South Oxfordshire District Council",
-    "South Ribble Borough Council",
-    "South Somerset District Council",
-    "South Staffordshire Council",
-    "South Tyneside Council",
-    "Southampton City Council",
-    "St Albans City and District Council",
-    "St Helens Metropolitan Borough Council",
-    "Stafford Borough Council",
-    "Staffordshire County Council",
-    "Staffordshire Moorlands District Council",
-    "Stirling Council",
-    "Stoke-on-Trent City Council",
-    "Stroud District Council",
-    "Suffolk County Council",
-    "Sunderland City Council",
-    "Swansea City and Borough Council",
-    "Swindon Borough Council",
-    "Tamworth Borough Council",
-    "Taunton Deane Borough Council",
-    "Teignbridge District Council",
-    "Telford & Wrekin Council",
-    "Test Valley Borough Council",
-    "Tewkesbury Borough Council",
-    "The Highland Council",
-    "Three Rivers District Council",
-    "Torbay Council",
-    "Vale of Glamorgan Council",
-    "Vale of White Horse District Council",
-    "Walsall Metropolitan Borough Council",
-    "Watford Borough Council",
-    "West Devon Borough Council",
-    "West Lothian Council",
-    "West Oxfordshire District Council",
-    "West Somerset District Council",
-    "West Suffolk District Council",
-    "Westmorland & Furness Council",
-    "Wigan Metropolitan Borough Council",
-    "Wiltshire Council",
-    "Winchester City Council",
-    "Wirral Council",
-    "Wolverhampton City Council",
-    "Wrexham County Borough Council",
-    "Wycombe District Council"
-
-]; // Array of strings containing different options
+// Array of strings containing different options
   const [inputValue, setInputValue] = useState(""); // State to store the input value
   const [filteredOptions, setFilteredOptions] = useState([]); // State to store filtered options based on input value
 
@@ -484,7 +345,13 @@ export default function Page() {
   const handleOptionSelect = (option) => {
     setInputValue(option); // Set input value to the selected option
     setFilteredOptions([]); // Clear filtered options
+    handleAnswer(7,option)
   };
+
+  const clearInput = () => {
+    setInputValue(""); // Clear input value
+  };
+  
   return (
     <>
     <div className=" mx-auto px-4 font-proxima-nova mt-20">
@@ -543,7 +410,7 @@ export default function Page() {
         
         {/* Display this div when he is not eligible */}
         {isSubmit ? (
-            <div className='container'>
+            <div className='container fade-in'>
 
                 {eligible ? (
                     <div className='py-10 px-5 bg-green_color text-white w-full mx-10  rounded-lg'>
@@ -562,7 +429,7 @@ export default function Page() {
             </div>
         ):(
             
-        <div className="container">
+        <div className="container fade-in">
             {formDisplay ? (
 
             <div
@@ -615,13 +482,13 @@ export default function Page() {
                 />
             </div>
             <div className="navigation-buttons">
-                <button
+                {/* <button
                     className="prev-button "
                     
                     onClick={handlePrevQuestion}
                 >
                     Back
-                </button>
+                </button> */}
                 <button
                     className="next-button"
                     onClick={handleSubmission}
@@ -634,7 +501,7 @@ export default function Page() {
             ):(
                 
             <div 
-            className="question-container bg-green_color text-white">
+            className="question-container mt-10 bg-green_color text-white">
                 <h2 className="question font-bold text-xl">{questions[currentQuestion]}</h2>
                 {(answers[1]==="Gas"&&currentQuestion===3) && (
                     <p className="answer mb-5 text-lg">
@@ -649,24 +516,43 @@ export default function Page() {
                 {questions[currentQuestion] === "8) As you qualify through a FLEX route, please type your local council below to see if they are taking part" ? (
                     <div className='options text-mud_color'>
                         
-                        <input
+                        {/* <input
                             type="text"
                             value={inputValue}
                             onChange={handleInputChange}
+                            onFocus={handleInputChange}
                             className="w-full rounded-md border border-mud_color p-2 text-mud_color"
                             placeholder='Type or select an option'
-                        />
+                        /> */}
+
+                      <div className="relative w-full">
+                            {/* Input field */}
+                            <input
+                            type="text"
+                            value={inputValue}
+                            onChange={handleInputChange}
+                            className="w-full rounded-md border border-mud_color p-2 pr-8 text-mud_color"
+                            placeholder="Type or select an option"
+                            />
+                            {/* Delete icon */}
+                            {inputValue && (
+                            <IoClose
+                                className="absolute hover:scale-125 top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
+                                onClick={clearInput}
+                                size={20}
+                            />
+                            )}
+                        </div>
+                        
                         {/* Display filtered options as suggestions */}
-                        <ul className='bg-white rounded-md '>
-                            {filteredOptions.slice(0,5).map((option, index) => (
-                            <li 
-                            key={index} 
-                            className={`option ${inputValue === option ? 'selected' : ''} hover:text-white`}
-                            onClick={() => handleOptionSelect(option)}>
+                        <div className='bg-white rounded-md' style={{ maxHeight: "200px", overflow: "auto", marginTop: "5px" }}>
+                            {filteredOptions.map((option, index) => (
+                            <div key={index} className='hover:bg-mud_color hover:text-white' onClick={() => handleOptionSelect(option)} style={{ padding: "5px", cursor: "pointer" }}>
                                 {option}
-                            </li>
+                            </div>
                             ))}
-                        </ul>
+                        </div>
+                        
                     
                   </div>
                 ):(
@@ -691,7 +577,7 @@ export default function Page() {
                 ))}
                 </div>
                 )}
-                {answers[0]==="Social Tenant" ? (
+                {notQualify && (
                     <div className="navigation-buttons">
                     <button
                     className="submit-button "
@@ -701,8 +587,9 @@ export default function Page() {
                     Submit
                     </button>
                     
-                </div>
-                ):(
+                    </div>
+                )}
+                {/*  :(
 
                 <div className="navigation-buttons">
                 <button
@@ -720,7 +607,7 @@ export default function Page() {
                     Next
                 </button>
                 </div>
-                )}
+                 )} */}
             </div>
 
             )}
