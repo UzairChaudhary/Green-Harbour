@@ -30,12 +30,12 @@
   }
   
   .option:hover {
-    background-color: #474038;
+    background-color: #176533;
   }
   
   .option.selected {
-    border: 2px solid #474038;
-    background-color: #474038;
+    border: 2px solid #176533;
+    background-color: #176533;
   }
   
   .option-letter {
@@ -43,14 +43,14 @@
   }
 
   .option-letter:hover{
-    background-color: #EA580C;
+    background-color: #176533;
 
   } 
   
   .option-letter.selected {
     
-    background-color: #EA580C;
-    border-color: #EA580C;
+    background-color: #176533;
+    border-color: #73BC78;
   }
   
   

@@ -23,7 +23,7 @@ export default function GetInTouch() {
     <>
     <div className='mb-20 md:mb-40 flex flex-col items-center mx-4 md:mx-12 lg:mx-24 xl:mx-40'>
       <div>
-        <h1 className='mt-10 md:mt-20 flex justify-center text-3xl md:text-4xl font-extrabold text-green_color'>Get In Touch</h1>
+        <h1 className='mt-10 md:mt-20 flex justify-center text-3xl md:text-4xl font-extrabold text-mud_color'>Get In Touch</h1>
         <div className='flex flex-col md:flex-row text-mud_color gap-10 mt-6 md:mt-10'>
           <div className='flex flex-col gap-3'>
             <h1>First Name</h1>
