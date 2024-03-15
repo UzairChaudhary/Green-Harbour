@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { links } from "../../data/links";
 import ActiveLink from './ActiveLink';
 import Button from '../common/button';
-
+import Image from 'next/image';
 function Navbar() {
     const [isMobile, setIsMobile] = useState(false);
     const { dispatch, isSidebarOpen } = useUiContext();
@@ -30,10 +30,11 @@ function Navbar() {
     }, []);
 
     return (
-        <nav suppressHydrationWarning={true} className="bg-green_color flex justify-between items-center pt-2 px-4">
+        <nav suppressHydrationWarning={true} className="bg-green_color flex justify-between items-center pt-2 px-8 pb-2">
             {/* Logo on the left */}
-            <Link href="/" suppressHydrationWarning={true}>
-                <h1 className="sm:text-4xl text-2xl sm:p-3 pb-2 font-extrabold text-mud_color">Green Harbour</h1>
+            <Link href="/" suppressHydrationWarning={true} className='ml-4'>
+                {/* <h1 className="sm:text-4xl text-2xl sm:p-3 pb-2 font-extrabold text-mud_color">Green Harbour</h1> */}
+                <Image src="/green-harbour-logo.png" alt="Green Harbour" width={130} height={110} />
             </Link>
 
             {/* Hamburger menu for mobile view */}

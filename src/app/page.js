@@ -8,8 +8,6 @@ import Upgrades from '../../components/LandingPage/Upgrades'
 import Working from '../../components/LandingPage/Working'
 import FAQ from '../../components/LandingPage/FAQ'
 import Aboutus from '../../components/LandingPage/aboutus'
-import GetInTouch from '../../components/LandingPage/GetInTouch'
-import Footer from '../../components/LandingPage/Footer'
 
 export default function Home() {
   return (
@@ -21,7 +19,7 @@ export default function Home() {
       <Working />
       <FAQ/>
       <Aboutus/>
-      <GetInTouch/>
+      
       
     </div>
   )

@@ -19,6 +19,10 @@
   font-family: 'Proxima Nova';
   src: url('/public/fonts/Proxima-Nova-Font.otf') format('otf');
 }
+@font-face {
+  font-family: 'Bebas Regular';
+  src: url('/public/fonts/Bebas-Regular.ttf') format('ttf');
+}
 
 html{
   @apply scroll-smooth font-proxima-nova;

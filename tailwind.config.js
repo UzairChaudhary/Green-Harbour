@@ -16,13 +16,14 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        green_color: '#87995C', // Green color
+        green_color: '#73BC78',//'#87995C', // light Green color
         orange_color: '#EA580C', // Orange color
-        mud_color : '#474038', // Hero Section Heading Color
+        mud_color :'#176533'// '#474038', //dark green Hero Section Heading Color
           
       },
       fontFamily: {
         'proxima-nova': ['Proxima Nova', 'sans-serif'],
+        'bebas-regular': ['Bebas Regular', 'serif'],
       },
       
     },
