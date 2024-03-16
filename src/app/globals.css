@@ -21,15 +21,13 @@
 }
 @font-face {
   font-family: 'Bebas Regular';
-  src: url('/public/fonts/Bebas-Regular.woff') format('woff');
+  src: url('/public/fonts/BebasNeue-Regular.ttf') format('ttf');
 }
 
 html{
   @apply scroll-smooth font-proxima-nova;
 }
-.hero-section{
-  @apply font-bebas-regular;
-}
+
 *::-webkit-scrollbar {
   @apply w-[5px] h-[5px];
 }

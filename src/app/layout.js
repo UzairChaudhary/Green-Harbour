@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Inter, Bebas_Neue } from 'next/font/google'
 import './globals.css'
 import { UiProvider } from "../../contexts/UiContext";
 import Navbar from '../../components/LandingPage/Navbar';
@@ -7,6 +7,11 @@ import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
+const bebas = Bebas_Neue({ 
+  weight: '400',
+  subsets: ['latin'],
+  variable:'--font-bebas'
+ })
 
 export const metadata = {
   title: 'Green Harbour',
@@ -18,8 +23,12 @@ export default function RootLayout({ children }) {
     <UiProvider>
 
     <html lang="en">
-      <body>
-        <Toaster/>
+      <body className={bebas.className}>
+        <Toaster 
+        toastOptions={{
+          className:'font-proxima-nova'
+        }}
+        />
         <NextTopLoader color='#176533' />
         <Navbar/>
         {children}
