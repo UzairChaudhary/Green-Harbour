@@ -27,6 +27,9 @@
 html{
   @apply scroll-smooth font-proxima-nova;
 }
+.hero-section{
+  @apply font-bebas-regular;
+}
 *::-webkit-scrollbar {
   @apply w-[5px] h-[5px];
 }
