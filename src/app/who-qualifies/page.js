@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../../components/common/button'
 import './Questions.css'; // Import CSS file for styling
 import GetInTouch from '../../../components/LandingPage/GetInTouch';
+import Link from 'next/link'
 
 import {toast} from 'react-hot-toast';
 import { IoClose } from 'react-icons/io5';
@@ -448,7 +449,11 @@ export default function Page() {
                 </div>
                 <div className='flex justify-center mt-5'>
 
-                    <Button/>
+                <Link
+                href="#question-container"
+                className="block  sm:w-auto bg-orange-500 text-lg text-white py-2 px-4 rounded-lg text-center hover:scale-105 hover:transition-a hover:bg-orange-600">
+                    Check Your Eligibility
+                </Link>
                 </div>
             </div>
             <div className='flex flex-col hover:scale-105 hover:transition-a w-80 justify-between  p-8 text-white bg-mud_color rounded-xl'>
@@ -459,7 +464,11 @@ export default function Page() {
                 </div>
                 <div className='flex flex-col items-center  mt-5'>
 
-                    <Button/>
+                <Link
+                href="#question-container"
+                className="block  sm:w-auto bg-orange-500 text-lg text-white py-2 px-4 rounded-lg text-center hover:scale-105 hover:transition-a hover:bg-orange-600">
+                    Check Your Eligibility
+                </Link>
                 </div>
             </div>
             <div className='flex flex-col hover:scale-105 hover:transition-a w-80 justify-between p-8 text-white bg-mud_color rounded-xl'>
@@ -474,7 +483,11 @@ export default function Page() {
                 </ul>
                 <div className='flex justify-center mt-5'>
 
-                    <Button/>
+                <Link
+                href="#question-container"
+                className="block  sm:w-auto bg-orange-500 text-lg text-white py-2 px-4 rounded-lg text-center hover:scale-105 hover:transition-a hover:bg-orange-600">
+                    Check Your Eligibility
+                </Link>
                 </div>
 
             </div>
@@ -573,7 +586,8 @@ export default function Page() {
             </div>
             ):(
                 
-            <div 
+            <div
+            id='question-container' 
             className="question-container fade-in mt-10 bg-green_color text-white">
                 <h2 className="question fade-in font-bold text-xl">{currentQuestion+1}) {questions[currentQuestion]}</h2>
                 {((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure")&&answers[2]==="Yes"&&currentQuestion===3) && (
