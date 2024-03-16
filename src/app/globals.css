@@ -21,7 +21,7 @@
 }
 @font-face {
   font-family: 'Bebas Regular';
-  src: url('/public/fonts/Bebas-Regular.ttf') format('ttf');
+  src: url('/public/fonts/Bebas-Regular.woff') format('woff');
 }
 
 html{
