@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <UiProvider>
 
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Toaster/>
         <NextTopLoader color='#176533' />
         <Navbar/>

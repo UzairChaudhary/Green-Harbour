@@ -42,7 +42,7 @@ html{
 /* Navbar links */
 .navbar ul a  {
   
-  @apply text-xl relative w-fit transition-a ;
+  @apply text-xl font-proxima-nova relative w-fit transition-a ;
   
 }
 .navbar ul a {
