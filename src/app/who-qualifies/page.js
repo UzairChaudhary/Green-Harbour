@@ -592,7 +592,7 @@ export default function Page() {
                 <h2 className="question fade-in font-bold text-xl">{currentQuestion+1}) {questions[currentQuestion]}</h2>
                 {((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure")&&answers[2]==="Yes"&&currentQuestion===3) && (
                     <p className="answer fade-in mb-5 text-lg">
-                    If unsure if the boiler qualifies, please visit <a href='https://www.homeheatingguide.co.uk/efficiency-tables' target='_blank' className='text-mud_color'>https://www.homeheatingguide.co.uk/efficiency-tables</a> and check that efficiency rating is below 86%
+                    If unsure if the boiler qualifies, please visit <a href='https://www.homeheatingguide.co.uk/efficiency-tables' target='_blank' className='text-mud_color'>https://www.homeheatingguide.co.uk/efficiency-tables</a> and check the efficiency rating is below 86%
                     </p>
                 )}
                 {(((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure")&&answers[2]==="Yes"&&currentQuestion===5)||(answers[1]==="Electricity"&&options[2].includes(answers[2])&&currentQuestion===3)) && (
