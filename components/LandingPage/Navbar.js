@@ -48,7 +48,7 @@ function Navbar() {
 
                     {isSidebarOpen && (
                         <div>
-                            <ul className={`bg-green_color text-mud_color mobile-dialog absolute h-screen flex flex-col space-y-4 p-3 dark:bg-dark-card transition-a top-0 left-0 !rounded-xl z-30 ${isSidebarOpen && "open"}`}>
+                            <ul className={`bg-green_color font-proxima-nova text-mud_color mobile-dialog absolute h-screen flex flex-col space-y-4 p-3 dark:bg-dark-card transition-a top-0 left-0 !rounded-xl z-30 ${isSidebarOpen && "open"}`}>
                                 <div className="flex justify-between border-b dark:border-mud_color space-x-40 p-1">
                                     <p className="uppercase">menu</p>
                                     <div
