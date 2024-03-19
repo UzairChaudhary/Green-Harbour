@@ -60,7 +60,7 @@ function Navbar() {
                                 </div>
                                 {links.map(({ id, linkText, url }) => (
                                     <Link key={id} href={url} end legacyBehavior>
-                                        <a onClick={() => dispatch({ type: actioTypes.closeSidebar })} className=" hover:text-white hover:bg-mud_color rounded-lg p-1 px-2">
+                                        <a onClick={() => dispatch({ type: actioTypes.closeSidebar })} className=" hover:text-white hover:bg-mud_color font-proxima-nova rounded-lg p-1 px-2">
                                             {linkText}
                                         </a>
                                     </Link>
