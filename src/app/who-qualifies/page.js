@@ -74,7 +74,7 @@ export default function Page() {
 
   const handleAnswer = (index, answer) => {
     setnotQualify(false)
-    console.log(answer)
+    //console.log(answer)
     setAnswers(prevAnswers => {
         const newAnswers = [...prevAnswers];
         newAnswers[index] = answer;
