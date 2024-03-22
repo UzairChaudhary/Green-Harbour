@@ -139,10 +139,10 @@ export default function Page() {
     // Case Gas -> Yes -> Property -> Claim UK Benefits No
     if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null && answers[4]!==null && answer==="No") {
         // 6) Does anyone living at the property claim any UK qualified benefits
-        console.log('case 2 No Gas')
+        //console.log('case 2 No Gas')
         updateQuestionAndAnswerAtIndex(6, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
-        console.log("updated")
-        console.log(questions)
+       // console.log("updated")
+       // console.log(questions)
         handleProceeding(index)
         return
 
