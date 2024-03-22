@@ -99,7 +99,7 @@ export default function Page() {
     }
     // Case Gas -> No -> Property -> Claim UK Benefits Yes
     if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="Yes"){
-        console.log("show form display")
+        //console.log("show form display")
         setCurrentQuestion(currentQuestion+1)
         handleFormDisplay()
         return
