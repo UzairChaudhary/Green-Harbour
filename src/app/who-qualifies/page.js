@@ -130,7 +130,7 @@ export default function Page() {
     if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]===null && answer==="Yes"){
         //console.log("case 1 gas yes")
         
-        console.log("show form display")
+        //console.log("show form display")
         setCurrentQuestion(currentQuestion+1)
         handleFormDisplay()
         return
