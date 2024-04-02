@@ -28,8 +28,8 @@ export async function GET() {
   export async function POST(req) {
     try {
       // Extract API key from request headers (optional, if needed)
-        const apiKey = process.env.HUBSPOT_ACCESS_KEY ;
-        //const apiKey = 'pat-na1-28a5323f-307f-4fed-b187-40d82f016b48' ;
+        //const apiKey = process.env.HUBSPOT_ACCESS_KEY ;
+        const apiKey = 'pat-na1-28a5323f-307f-4fed-b187-40d82f016b48' ;
         
         const apiUrl = `https://api.hubapi.com/crm/v3/objects/contacts`;
         
