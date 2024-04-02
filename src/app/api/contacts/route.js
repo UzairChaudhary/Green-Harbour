@@ -28,12 +28,12 @@ export async function GET() {
   export async function POST(req) {
     try {
       // Extract API key from request headers (optional, if needed)
-        const apiKey = process.env.HUBSPOT_ACCESS_TOKEN ;
+        const apiKey = process.env.HUBSPOT_ACCESS_KEY ;
         
         const apiUrl = `https://api.hubapi.com/crm/v3/objects/contacts`;
         
         const data = await req.json();
-        //console.log(data)
+        console.log("data : ",data)
 
         const response = await axios.post(apiUrl, data, {
             headers: {

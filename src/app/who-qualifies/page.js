@@ -342,52 +342,55 @@ export default function Page() {
     setAnswers(filteredAnswers)
     console.log(filteredQuestions)
     console.log(filteredAnswers)
-    toast.success('Submitted Successfully')
-    seteligible(true)
-    setisSubmit(true)
-    // if(firstname===""){
-    //     toast.error("Please enter your first name")
-    //     return
-    // }
-    // if(lastname===""){
-    //     toast.error("Please enter your last name")
-    //     return
-    // }
-    // if(phonenumber===""){
-    //     toast.error("Please enter your phone number")
-    //     return
-    // }
-    // if(email===""){
-    //     toast.error("Please enter your email")
-    //     return
-    // }
-    // try{
-    //     const contactData = {
-    //         properties: {
-    //           firstname: firstname,
-    //           lastname: lastname,
-    //           email: email,
-    //           phone: phonenumber
-    //         }
-    //       };
-    //     axios.post('/api/contacts', contactData)
-    //     .then(response => {
-    //         //console.log(response.data);
-    //         if (response.data.success){
-    //             toast.success('Submitted Successfully')
-    //             seteligible(true)
-    //             setisSubmit(true)
-    //         }
-    //         else
-    //         {
-    //             toast.error(response.data.error)
-    //         }
-    //     }); 
+    // toast.success('Submitted Successfully')
+    // seteligible(true)
+    // setisSubmit(true)
+    if(firstname===""){
+        toast.error("Please enter your first name")
+        return
+    }
+    if(lastname===""){
+        toast.error("Please enter your last name")
+        return
+    }
+    if(phonenumber===""){
+        toast.error("Please enter your phone number")
+        return
+    }
+    if(email===""){
+        toast.error("Please enter your email")
+        return
+    }
+    try{
+        const contactData = {
+            properties: {
+              firstname: firstname,
+              lastname: lastname,
+              email: email,
+              phone: phonenumber,
+              questions: filteredQuestions,
+              responses: filteredAnswers
+              
+            }
+          };
+        axios.post('/api/contacts', contactData)
+        .then(response => {
+            //console.log(response.data);
+            if (response.data.success){
+                toast.success('Submitted Successfully')
+                seteligible(true)
+                setisSubmit(true)
+            }
+            else
+            {
+                toast.error("Something went wrong. Please try again.")
+            }
+        }); 
         
-    // }
-    // catch(error){
-    //     console.error('Error:', error);
-    // }
+    }
+    catch(error){
+        console.error('Error:', error);
+    }
     
     
   }
