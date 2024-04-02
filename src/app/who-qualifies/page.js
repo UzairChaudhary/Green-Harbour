@@ -121,7 +121,7 @@ export default function Page() {
 
     if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null&& answers[4]==="No" && answers[5]===null && answer!=="None of the above apply") {
         //If none of the above apply, show form
-        updateQuestionAndAnswerAtIndex(6, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
+        updateQuestionAndAnswerAtIndex(6, "As you qualify through a FLEX route, please type your local council below to see if they are taking part? ", ["Dropdown"]);
         handleProceeding(index)
         return
        
@@ -158,7 +158,7 @@ export default function Page() {
     // Case Gas -> Yes -> Property -> Claim UK Benefits No -> Other than None of above apply
     if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]==="No" && answer!=="None of the above apply") {
         // Add a custom question based on previous responses
-        updateQuestionAndAnswerAtIndex(7, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
+        updateQuestionAndAnswerAtIndex(7, "As you qualify through a FLEX route, please type your local council below to see if they are taking part? ", ["Dropdown"]);
         console.log("updated")
         console.log(questions)
         
@@ -212,7 +212,7 @@ export default function Page() {
     }
     //Case Electricity -> Property -> Claim Uk Benefits No -> Other than None of above apply
     if (answers[1] === "Electricity" && answers[2]!==null && answers[3]==="No" && (answers[4]===null || answers[4]==="None of the above apply")&& answer!=="None of the above apply") {
-        updateQuestionAndAnswerAtIndex(5, "As you qualify through a FLEX route, please type your local council below to see if they are taking part", ["Dropdown"]);
+        updateQuestionAndAnswerAtIndex(5, "As you qualify through a FLEX route, please type your local council below to see if they are taking part? ", ["Dropdown"]);
         
     }
 
@@ -362,22 +362,33 @@ export default function Page() {
         return
     }
     try{
-        const contactData = {
+        const contactInfo = {
             properties: {
               firstname: firstname,
               lastname: lastname,
               email: email,
-              phone: phonenumber,
-              questions: filteredQuestions,
-              responses: filteredAnswers
-              
+              phone: phonenumber,                       
+            
             }
           };
-        axios.post('/api/contacts', contactData)
+
+        
+
+        const combinedArray = filteredQuestions.map((question, index) => question + filteredAnswers[index]);
+
+        console.log(combinedArray);
+
+        combinedArray.forEach((question, index) => {
+            
+            contactInfo.properties[`question${index+1}`] = combinedArray[index];
+        });
+
+        console.log(contactInfo);
+        axios.post('/api/userResponses', contactInfo)
         .then(response => {
-            //console.log(response.data);
+            console.log(response.data);
             if (response.data.success){
-                toast.success('Submitted Successfully')
+                toast.success('Thankyou for contacting us. We will get back to you soon.')
                 seteligible(true)
                 setisSubmit(true)
             }
@@ -608,7 +619,7 @@ export default function Page() {
                         (This could include Pension Credit, Child benefits, Working Tax Credits, income support etc.)
                     </p>
                 )}
-                {questions[currentQuestion] === "As you qualify through a FLEX route, please type your local council below to see if they are taking part" ? (
+                {questions[currentQuestion] === "As you qualify through a FLEX route, please type your local council below to see if they are taking part? " ? (
                     <div className='options fade-in text-mud_color'>
                         
                         {/* <input

@@ -44,6 +44,7 @@ export async function GET() {
   
         // Handle successful response
         console.log("response : ",response.data)
+        
         return NextResponse.json({ success: 'Data sent successfully' });
     } catch (error) {
       console.error(error);
