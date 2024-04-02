@@ -33,7 +33,7 @@ export async function GET() {
         const apiUrl = `https://api.hubapi.com/crm/v3/objects/contacts`;
         
         const data = await req.json();
-        console.log("data : ",data)
+        //console.log("data : ",data)
 
         const response = await axios.post(apiUrl, data, {
             headers: {
@@ -43,11 +43,11 @@ export async function GET() {
           });
   
         // Handle successful response
-        console.log("response : ",response.data)
+        //console.log("response : ",response.data)
         
         return NextResponse.json({ success: 'Data sent successfully' });
     } catch (error) {
-      console.error(error);
+      //console.error(error);
       return NextResponse.json({ error: 'Incorrect Information' });
     }
   }

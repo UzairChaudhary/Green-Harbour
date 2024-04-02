@@ -159,8 +159,8 @@ export default function Page() {
     if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null&& answers[4]!==null&& answers[5]==="No" && answer!=="None of the above apply") {
         // Add a custom question based on previous responses
         updateQuestionAndAnswerAtIndex(7, "As you qualify through a FLEX route, please type your local council below to see if they are taking part? ", ["Dropdown"]);
-        console.log("updated")
-        console.log(questions)
+        //console.log("updated")
+        //console.log(questions)
         
 
        
@@ -168,7 +168,7 @@ export default function Page() {
     // Case Gas ->Yes ->Boiler is not older than 15 years
     if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answer==="No"){
         //if boiler is not older than 15 years, he will not qualify
-        console.log("Boiler doesn't qualify")
+        //console.log("Boiler doesn't qualify")
         setnotQualify(true)
         return
         
@@ -188,8 +188,8 @@ export default function Page() {
        
         let allquestions = questions.slice(0,4)
         setQuestions(allquestions)
-        console.log(allquestions)
-        console.log("show form display")
+        //console.log(allquestions)
+        //console.log("show form display")
         setCurrentQuestion(currentQuestion+1)
         handleFormDisplay()
         return
@@ -258,9 +258,9 @@ export default function Page() {
 
     }
     const handleProceeding = (index) => {
-        console.log("index: ",index)
-        console.log("no of Questions: ",questions.length)
-        console.log(questions)
+        //console.log("index: ",index)
+        //console.log("no of Questions: ",questions.length)
+        //console.log(questions)
         
         if (index < questions.length-1) {
             setCurrentQuestion(index + 1);
@@ -290,8 +290,8 @@ export default function Page() {
 
   const handlePrevQuestion = () => {
     //automatically change back questions if option is not electricity
-    console.log(questions)
-    console.log(currentQuestion)
+    //console.log(questions)
+    //console.log(currentQuestion)
     if(formDisplay){
         setformDisplay(false)
     }
@@ -333,15 +333,15 @@ export default function Page() {
   }
 
   const handleSubmission = () =>{
-    console.log("trimQuestions")
+    //console.log("trimQuestions")
     const filteredQuestions = questions.filter(question => question.trim() !== "");
     const filteredAnswers = answers.filter(answer => answer !== null);
 
     //Update the state with filtered questions
     setQuestions(filteredQuestions);
     setAnswers(filteredAnswers)
-    console.log(filteredQuestions)
-    console.log(filteredAnswers)
+    //console.log(filteredQuestions)
+    //console.log(filteredAnswers)
     // toast.success('Submitted Successfully')
     // seteligible(true)
     // setisSubmit(true)
@@ -376,17 +376,17 @@ export default function Page() {
 
         const combinedArray = filteredQuestions.map((question, index) => question + filteredAnswers[index]);
 
-        console.log(combinedArray);
+        //console.log(combinedArray);
 
         combinedArray.forEach((question, index) => {
             
             contactInfo.properties[`question${index+1}`] = combinedArray[index];
         });
 
-        console.log(contactInfo);
+        //console.log(contactInfo);
         axios.post('/api/userResponses', contactInfo)
         .then(response => {
-            console.log(response.data);
+            //conconsole.log(response.data);
             if (response.data.success){
                 toast.success('Thankyou for contacting us. We will get back to you soon.')
                 seteligible(true)
