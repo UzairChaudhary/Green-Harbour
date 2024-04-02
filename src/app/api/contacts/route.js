@@ -4,7 +4,7 @@ import {NextResponse} from 'next/server';
 export async function GET() {
     try {
       // Extract API key from request headers (optional, if needed)
-        const apiKey = process.env.NEXT_PUBLIC_HUBSPOT_ACCESS_TOKEN ;
+        const apiKey = process.env.HUBSPOT_ACCESS_TOKEN ;
         //console.log(apiKey)
         // Construct the API request URL
       const apiUrl = `https://api.hubapi.com/crm/v3/objects/contacts`;
@@ -28,7 +28,7 @@ export async function GET() {
   export async function POST(req) {
     try {
       // Extract API key from request headers (optional, if needed)
-        const apiKey = process.env.NEXT_PUBLIC_HUBSPOT_ACCESS_TOKEN ;
+        const apiKey = process.env.HUBSPOT_ACCESS_TOKEN ;
         
         const apiUrl = `https://api.hubapi.com/crm/v3/objects/contacts`;
         
