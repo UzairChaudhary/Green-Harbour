@@ -31,7 +31,7 @@ export async function POST(req) {
         const apiUrl = `https://api.hubapi.com/crm/v3/objects/contacts`;
         
         const data = await req.json();
-        console.log("data : ",data)
+        //console.log("data : ",data)
         
         // const { contactInfo, filteredQuestions, filteredAnswers } = reqBody;
         // console.log(contactInfo)
@@ -72,7 +72,7 @@ export async function POST(req) {
           });
   
         // Handle successful response
-        console.log("response : ",response.data)
+        //console.log("response : ",response.data)
         return NextResponse.json({ success: 'Data sent successfully' });
     } catch (error) {
       console.error(error);

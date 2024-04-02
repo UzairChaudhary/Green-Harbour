@@ -16,10 +16,7 @@ export default function GetInTouch() {
         toast.error("Please enter your first name")
         return
     }
-    if(lastname===""){
-        toast.error("Please enter your last name")
-        return
-    }
+    
     if(email===""){
       toast.error("Please enter your email")
       return

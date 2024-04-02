@@ -95,7 +95,6 @@ export default function Page() {
     //Case Gas -> No -> Property
     if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && options[3].includes(answer)) {
         updateQuestionAndAnswerAtIndex(4,"Does anyone living at the property claim any UK qualified benefits?", ["Yes","No"]);
-        
     }
     // Case Gas -> No -> Property -> Claim UK Benefits Yes
     if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="Yes"){
@@ -334,14 +333,18 @@ export default function Page() {
 
   const handleSubmission = () =>{
     //console.log("trimQuestions")
-    const filteredQuestions = questions.filter(question => question.trim() !== "");
-    const filteredAnswers = answers.filter(answer => answer !== null);
+    // const filteredQuestions = questions.filter(question => question.trim() !== "");
+    const filteredQuestions = questions.slice(0, currentQuestion);
+    // const filteredAnswers = answers.filter(answer => answer !== null);
+    const filteredAnswers = answers.slice(0, currentQuestion);
 
     //Update the state with filtered questions
     setQuestions(filteredQuestions);
     setAnswers(filteredAnswers)
+    
     //console.log(filteredQuestions)
     //console.log(filteredAnswers)
+
     // toast.success('Submitted Successfully')
     // seteligible(true)
     // setisSubmit(true)
@@ -349,10 +352,7 @@ export default function Page() {
         toast.error("Please enter your first name")
         return
     }
-    if(lastname===""){
-        toast.error("Please enter your last name")
-        return
-    }
+    
     if(phonenumber===""){
         toast.error("Please enter your phone number")
         return
