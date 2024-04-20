@@ -106,7 +106,7 @@ export default function Page() {
     }
     // Case Gas -> No -> Property -> Claim UK Benefits No
     if((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]==="No" && answers[3]!==null && answers[4]===null && answer==="No"){
-        updateQuestionAndAnswerAtIndex(5, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]); 
+        updateQuestionAndAnswerAtIndex(5, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular issues, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]); 
         handleProceeding(index)
         return
     }
@@ -140,7 +140,7 @@ export default function Page() {
     if ((answers[1] === "Gas" || answers[1] === "Oil" || answers[1] === "Not sure") && answers[2]!==null && answers[3]!==null && answers[4]!==null && answer==="No") {
         // 6) Does anyone living at the property claim any UK qualified benefits
         //console.log('case 2 No Gas')
-        updateQuestionAndAnswerAtIndex(6, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
+        updateQuestionAndAnswerAtIndex(6, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular issues, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
        // console.log("updated")
        // console.log(questions)
         handleProceeding(index)
@@ -198,7 +198,7 @@ export default function Page() {
     //Case Electricity -> Property -> Claim UK Benefits No
     if(answers[1] === "Electricity" && answers[2]!==null && answers[3]===null && answer==="No"){
        
-        updateQuestionAndAnswerAtIndex(4, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular problems, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
+        updateQuestionAndAnswerAtIndex(4, "Do either of the following two options apply to you?", ["Someone in the household has a health condition and could qualify through an NHS referral (i.e. related to Cardiovascular issues, Respiratory issues, Limited mobility or Weakened immunity)", "Household earns under £31,000 per year (before tax)", "Both apply", "None of the above apply"]);
         handleProceeding(index) 
         return
         
@@ -490,7 +490,7 @@ export default function Page() {
                 <h1 className='text-2xl flex justify-center font-bold'>NHS Referrral</h1>
                 <p className=' mt-5'>You may qualify for ECO4 benefits through an NHS referral if you or anyone in the household receive repeated medication or have medical conditions affected by the cold, such as:</p>
                 <ul className='list-disc mt-5 pl-5'>
-                        <li>Cardiovascular problems</li>
+                        <li>Cardiovascular issues</li>
                         <li>Respiratory issues</li>
                         <li>Limited mobility</li>
                         <li>Weakened immunity</li>
