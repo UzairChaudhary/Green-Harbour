@@ -6,6 +6,7 @@ import Footer from '../../components/LandingPage/Footer';
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'react-hot-toast'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ['latin'] })
 const bebas = Bebas_Neue({ 
@@ -33,8 +34,10 @@ export default function RootLayout({ children }) {
         <NextTopLoader color='#176533' />
         <Navbar/>
         {children}
-        <Footer/>
         <SpeedInsights />
+        <Analytics />
+        <Footer/>
+        
       </body>
     </html>
     </UiProvider>
