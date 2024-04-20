@@ -9,6 +9,7 @@ import {toast} from 'react-hot-toast';
 import { IoClose } from 'react-icons/io5';
 
 import { council_options } from '../../../data/council';
+import ContactUs from '../../../components/LandingPage/ContactUs';
 const axios = require('axios');
 
 export default function Page() {
@@ -727,6 +728,7 @@ export default function Page() {
         
     </div>
     <GetInTouch/>
+    <ContactUs/>
     </>
   )
 }

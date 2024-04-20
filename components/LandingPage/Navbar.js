@@ -1,6 +1,10 @@
 "use client"
 import React, { useEffect, useState } from 'react';
+
 import { FiDelete } from "react-icons/fi";
+import { FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+
 import { useUiContext } from "../../contexts/UiContext";
 import { actioTypes } from "../../reducers/uiReducer";
 import Link from 'next/link';
@@ -36,6 +40,18 @@ function Navbar() {
                 {/* <h1 className="sm:text-4xl text-2xl sm:p-3 pb-2 font-extrabold text-mud_color">Green Harbour</h1> */}
                 <Image src="/green-harbour-logo.png" alt="Green Harbour" width={130} height={110} />
             </Link>
+            <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-1 md:mb-0 text-sm sm:text-base md:text-lg lg:text-lg">
+                    <FaPhone className="text-white " />
+                    <a href="tel:08000016673" className="font-proxima-nova text-white hover:text-mud_color  transition-a">08000016673</a>
+                </div>
+                <div className="flex items-center gap-3 text-sm sm:text-base md:text-lg lg:text-lg">
+                    <MdEmail className="text-white " />
+                    <a href="mailto:info@greenharboureco4.co.uk" className="font-proxima-nova text-white hover:text-mud_color  transition-a">info@greenharboureco4.co.uk</a>
+                </div>
+            </div>
+
+
 
             {/* Hamburger menu for mobile view */}
             {isMobile ? (
